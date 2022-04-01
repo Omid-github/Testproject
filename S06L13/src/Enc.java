@@ -3,9 +3,9 @@ class demo{
 	private int id;
 	
 	
-	public void SetData(String name,int id1) {
+	public void SetData(String name1,int id1) {
 		this.id =  id1;
-		this.name = name;
+		this.name = name1;
 		//System.out.println("Name : "+ this.name);
 		//System.out.println("id : "+ this.id);
 
