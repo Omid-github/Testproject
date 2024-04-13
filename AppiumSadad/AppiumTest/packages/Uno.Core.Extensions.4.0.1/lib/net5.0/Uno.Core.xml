@@ -1,0 +1,748 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Uno.Extensions.ActionAsyncExtensions">
+            <summary>
+            Extensions of <see cref="T:Uno.ActionAsync"/>
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.ActionAsyncExtensions.SafeInvoke(Uno.ActionAsync,System.Threading.CancellationToken)">
+            <summary>
+            Invoke the <paramref name="action"/> if not null.
+            </summary>
+            <param name="action">Action to invoke</param>
+            <param name="ct">A CanellationToken</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ActionAsyncExtensions.SafeInvoke``1(Uno.ActionAsync{``0},System.Threading.CancellationToken,``0)">
+            <summary>
+            Invoke the <paramref name="action"/> if not null.
+            </summary>
+            <param name="action">Action to invoke</param>
+            <param name="ct">A CanellationToken</param>
+            <param name="param">Parameter of action</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.DoubleExtensions.Clamp(System.Double,System.Double,System.Double)">
+            <summary>
+            Clamps the value between a minimum and maximum (clamping means limiting to a certain range)
+            </summary>
+            <param name="valueToClamp">value to clamp</param>
+            <param name="minimum">minimal value possible</param>
+            <param name="maximum">maximum value possible</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.DoubleExtensions.RoundAwayFromZero(System.Double)">
+            <summary>
+            When a number is halfway between two others, it is rounded toward the nearest number that is away from zero.
+            </summary>
+            <param name="number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.DoubleExtensions.EnsureNumber(System.Double,System.Double)">
+            <summary>
+            Returns a specified fallback if double is NaN
+            </summary>
+            <param name="value"></param>
+            <param name="targetValueIfNan"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumHelper.GetNames``1">
+            <summary>
+            This is an alternative to Enum.GetNames() who is faster because are
+            not sorting the results
+            </summary>
+            <remarks>
+            The result order is the same than EnumHelper.GetValues().
+            Note: Considerer using memoization if called often.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.EnumHelper.GetValues``1">
+            <summary>
+            This is an alternative to Enum.GetValues() who is faster because are
+            not sorting the results.
+            </summary>
+            <remarks>
+            The result order is the same than EnumHelper.GetNames().
+            Note: Considerer using memoization if called often.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.ApplyMemoized``2(``0,System.Func{``0,``1})">
+            <summary>
+            Invokes the specified selector on the specified source. The result of the computation will be memoized for the specified source.
+            </summary>
+            <remarks>
+            This method uses the selector instance to associate the results to the source instance. 
+            Make sure to use a stable instance, e.g. not a lambda with closures over local or instance variables.
+            </remarks>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <param name="source">The source instance.</param>
+            <param name="selector">The method group to use.</param>
+            <returns>The memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.ApplyMemoized``3(``0,System.Func{``0,``2,``1},``2)">
+            <summary>
+            Invokes the specified selector on the specified source, with the specified parameter. The result of the computation will be memoized for the specified source and parameter.
+            </summary>
+            <remarks>
+            This method uses the selector instance to associate the results to the source instance. 
+            Make sure to use a stable instance, e.g. not a lambda with closures over local or instance variables.
+            </remarks>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <typeparam name="TParam">A parameter to pass the selector call</typeparam>
+            <param name="source">The source instance.</param>
+            <param name="selector">The method group to use.</param>
+            <returns>The memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.ApplyMemoized``4(``0,System.Func{``0,``2,``3,``1},``2,``3)">
+            <summary>
+            Invokes the specified selector on the specified source, with the specified parameters. The result of the computation will be memoized for the specified source and parameters.
+            </summary>
+            <remarks>
+            This method uses the selector instance to associate the results to the source instance. 
+            Make sure to use a stable instance, e.g. not a lambda with closures over local or instance variables.
+            </remarks>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <typeparam name="TParam1">A parameter to pass the selector call</typeparam>
+            <typeparam name="TParam2">A parameter to pass the selector call</typeparam>
+            <param name="source">The source instance.</param>
+            <param name="selector">The method group to use.</param>
+            <returns>The memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.AsWeakMemoized``2(System.Func{``0,``1},``0)">
+            <summary>
+            Creates a func that invokes the specified selector on the specified source. The result of the computation will be memoized for the specified source.
+            </summary>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <param name="source">The source instance.</param>
+            <param name="selector">The method group to use.</param>
+            <returns>A function that will return the memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.AsWeakMemoized``3(System.Func{``0,``2,``1},``0)">
+            <summary>
+            Creates a func that invokes the specified selector on the specified source, with the specified parameter. The result of the computation will be memoized for the specified source and parameter.
+            </summary>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <typeparam name="TParam">A parameter to pass the selector call</typeparam>
+            <param name="source">The source instance.</param>
+            <param name="selector">The method group to use.</param>
+            <returns>A function that will return the memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncExtensions.AsWeakMemoized``4(System.Func{``0,``2,``3,``1},``0)">
+            <summary>
+            Creates a func that invokes the specified selector on the specified source, with the specified parameters. The result of the computation will be memoized for the specified source and parameters.
+            </summary>
+            <typeparam name="TSource">The type of the parameter</typeparam>
+            <typeparam name="TResult">The type of the computation result</typeparam>
+            <typeparam name="TParam1">A parameter to pass the selector call</typeparam>
+            <typeparam name="TParam2">A parameter to pass the selector call</typeparam>
+            <param name="selector">The method group to use.</param>
+            <param name="source">The source instance.</param>
+            <returns>A function that will return the memoized result</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``1(System.Func{``0})">
+            <summary>
+            Parameter less memoizer, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``2(System.Func{``0,``1})">
+            <summary>
+            Memoizer with one parameter, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``3(System.Func{``0,``1,``2})">
+            <summary>
+            Memoizer with two parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam1">The first parameter type to memoize</typeparam>
+            <typeparam name="TParam2">The second parameter type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``4(System.Func{``0,``1,``2,``3})">
+            <summary>
+            Memoizer with three parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam1">The first parameter type to memoize</typeparam>
+            <typeparam name="TParam2">The second parameter type to memoize</typeparam>
+            <typeparam name="TParam3">The third parameter type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``5(System.Func{``0,``1,``2,``3,``4})">
+            <summary>
+            Memoizer with four parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam1">The first parameter type to memoize</typeparam>
+            <typeparam name="TParam2">The second parameter type to memoize</typeparam>
+            <typeparam name="TParam3">The third parameter type to memoize</typeparam>
+            <typeparam name="TParam4">The fourth parameter type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``6(System.Func{``0,``1,``2,``3,``4,``5})">
+            <summary>
+            Memoizer with five parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam1">The first parameter type to memoize</typeparam>
+            <typeparam name="TParam2">The second parameter type to memoize</typeparam>
+            <typeparam name="TParam3">The third parameter type to memoize</typeparam>
+            <typeparam name="TParam4">The fourth parameter type to memoize</typeparam>
+            <typeparam name="TParam5">The fifth parameter type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a parameter-less memoizer for the the specified task provider. The task provider is guaranteed to be executed only once.
+            </summary>
+            <typeparam name="T">The return value type</typeparam>
+            <param name="func">A function that will call the create the task.</param>
+            <returns>A function that will return a task </returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``1(Uno.FuncAsync{``0})">
+            <summary>
+            Creates a parameter-less memoizer for the the specified task provider. The task provider is guaranteed to be executed only once.
+            </summary>
+            <typeparam name="T">The return value type</typeparam>
+            <param name="func">A function that will call the create the task.</param>
+            <returns>A function that will return a task </returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsMemoized``2(Uno.FuncAsync{``0,``1})">
+            <summary>
+            Creates a memoizer with one parameter for the the specified task provider. The task provider is guaranteed to be executed only once per parameter instance.
+            </summary>
+            <typeparam name="TResult">The return value type</typeparam>
+            <typeparam name="TParam"></typeparam>
+            <param name="func">A function that will call the create the task.</param>
+            <returns>A function that will return a task </returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsLockedMemoized``1(System.Func{``0})">
+            <summary>
+            Parameter less thread-safe memoizer, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsLockedMemoized``2(System.Func{``0,``1})">
+            <summary>
+            Memoizer with one parameter, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsLockedMemoized``3(System.Func{``0,``1,``2})">
+            <summary>
+            Memoizer with two parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsLockedMemoized``4(System.Func{``0,``1,``2,``3})">
+            <summary>
+            Memoizer with three parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensions.AsLockedMemoized``5(System.Func{``0,``1,``2,``3,``4})">
+            <summary>
+            Memoizer with four parameters, used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="T">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="T:Uno.Extensions.MatchExtensions">
+            <summary>
+            Provide extentions for the System.Text.RegularExpressions.Match class
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.MatchExtensions.AsEnumerable(System.Text.RegularExpressions.Match)">
+            <summary>
+            Converts a Regular Expression Match instance to an enumerable of Regular Expression Match instances
+            </summary>
+            <param name="match">A Regular Expression Match instance</param>
+            <returns>An enumerable of matches</returns>
+        </member>
+        <member name="M:Uno.Extensions.StreamExtensions.ReadToEnd(System.IO.Stream)">
+            <summary>
+            Reads the text container into the specified stream.
+            </summary>
+            <param name="stream"></param>
+            <returns>The string using the default encoding.</returns>
+            <remarks>The stream will be disposed when calling this method.</remarks>
+        </member>
+        <member name="M:Uno.Extensions.StreamExtensions.ReadToEnd(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Reads the text container into the specified stream.
+            </summary>
+            <param name="stream"></param>
+            <returns>The string using the default encoding.</returns>
+            <remarks>The stream will be disposed when calling this method.</remarks>
+        </member>
+        <member name="M:Uno.Extensions.StreamExtensions.StartsWith(System.IO.Stream,System.Byte[])">
+            <summary>
+            Warning, if stream cannot be seek, will read from current position!
+            Warning, stream position will not been restored!
+            </summary>
+            <param name="stream"></param>
+            <param name="start"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.StreamExtensions.ToMemoryStream(System.IO.Stream)">
+            <summary>
+            Create a MemoryStream, copy <see cref="!:source"/> to it, and set position to 0.
+            </summary>
+            <param name="source">Stream to copy</param>
+            <returns>Newly created memory stream, position set to 0</returns>
+        </member>
+        <member name="M:Uno.Extensions.StreamExtensions.ToSeekable(System.IO.Stream)">
+            <summary>
+            Check if <see cref="!:stream"/> is seekable (CanSeek), if not copy it to a MemoryStream. 
+            WARNING: Some stream (like UnmanagedMemoryStream) return CanSeek = true but are not seekable. Prefer using ToMemoryStream() to be 100% safe.
+            </summary>
+            <param name="stream">A stream</param>
+            <returns>A seekable stream (orginal if seekable, a MemoryStream copy of <see cref="!:stream"/> else)</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Contains(System.String,System.String,System.StringComparison)">
+            <summary>
+            Check if the specified string occures in the current System.String object. A parameter specifies the type of search to use for the specified string.
+            </summary>
+            <param name="instance"></param>
+            <param name="value">The string to seek.</param>
+            <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.IsNumber(System.String)">
+            <summary>
+            Check if every characters in the string is considered as a "Unicode Number". WARNING: READ REMARKS!!
+            </summary>
+            <remarks>
+             In addition to including digits, numbers include characters, fractions, subscripts, superscripts,
+            Roman numerals, currency numerators, and encircled numbers. This method contrasts with the IsDigit
+            method, which determines whether a Char is a radix-10 digit.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.IsDigit(System.String)">
+            <summary>
+            Check if every characters in the string is considered as a "Unicode Decimal Digit". (char 0-9)
+            </summary>
+            <remarks>
+            This contrasts with IsNumber, which determines whether a Char is of any numeric Unicode category.
+            Numbers include characters such as fractions, subscripts, superscripts, Roman numerals,
+            currency numerators, encircled numbers, and script-specific digits.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Left(System.String,System.Int32)">
+            <summary>
+            Returns a string that contains a specified number of characters from the left side of a string.
+            </summary>
+            <param name="instance"><see cref="T:System.String"/> expression from which the leftmost characters are returned.</param>
+            <param name="length"><see cref="T:System.Int32"/> expression. Numeric expression indicating how many characters to return.</param>
+            <returns>If zero, a zero-length string ("") is returned. If greater than or equal to the number of characters in value, the complete string is returned.</returns>
+            <exception cref="T:System.ArgumentException">length &lt; 0</exception>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Right(System.String,System.Int32)">
+            <summary>
+            Returns a string containing a specified number of characters from the right side of a string.
+            </summary>
+            <param name="instance"><see cref="T:System.String"/> expression from which the rightmost characters are returned.</param>
+            <param name="length"><see cref="T:System.Int32"/> expression. Numeric expression indicating how many characters to return.</param>
+            <returns>If zero, a zero-length string ("") is returned. If greater than or equal to the number of characters in value, the complete string is returned.</returns>
+            <exception cref="T:System.ArgumentException">length &lt; 0</exception>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.LeftRightInternal(System.String,System.Int32,System.Func{System.String})">
+            <summary>
+            Returns a string that contains a specified number of characters of a string.
+            </summary>
+            <param name="instance"><see cref="T:System.String"/> expression from which the characters are returned.</param>
+            <param name="length"><see cref="T:System.Int32"/> expression. Numeric expression indicating how many characters to return.</param>
+            <param name="predicate">Func <see cref="T:System.String"/> expression that returns the substring.</param>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Append(System.String,System.String)">
+            <summary>
+            Append a chunk at the end of a string
+            </summary>
+            <param name="target">target string object</param>
+            <param name="chunk">Chunk to add</param>
+            <returns>New string with the chunk at appended at the end.</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Append(System.String,System.String,System.Func{System.String,System.Boolean})">
+            <summary>
+            Append a chunk at the end of a string only if the condition is met.
+            </summary>
+            <param name="target">target string object</param>
+            <param name="chunk">Chunk to add</param>
+            <param name="condition">Condition to meet for the chunk to be added</param>
+            <returns>New string with the chunk at appended at the end or original string if condition is not met.</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.AppendIfMissing(System.String,System.String)">
+            <summary>
+            Append a chunk at the end of a string only if the string doen't end by it.
+            </summary>
+            <param name="target">target string object</param>
+            <param name="chunk">Chunk to add</param>
+            <returns>New string with the chunk at appended at the end or the original string if the target already end by chunk.</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.TrimStart(System.String,System.String)">
+            <summary>
+            Removes all leading occurrences of <see cref="!:trimText"/> from the current System.String object
+            </summary>
+            <param name="trimText">A string to remove</param>
+            <returns>The string that remains after all occurrences of the <see cref="!:trimText"/> are removed from the start of the current string.</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.TrimEnd(System.String,System.String)">
+            <summary>
+            Removes all trailing occurrences of <see cref="!:trimText"/> from the current System.String object
+            </summary>
+            <param name="trimText">A string to remove</param>
+            <returns>The string that remains after all occurrences of the <see cref="!:trimText"/> are removed from the end of the current string.</returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.UppercaseFirst(System.String)">
+            <summary>
+            Uppercases the first character of the string.
+            If the string is <c>null</c> or <c>""</c> then it returns <c>string.Empty</c>
+            </summary>
+            <param name="s">The string.</param>
+            <returns>The string where the first character is in uppercase or <c>string.Empty</c> if the string is <c>null</c> or <c>""</c></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Uno.Extensions.StringExtensions.RemoveDiacritics(System.String)" -->
+        <member name="M:Uno.Extensions.StringExtensions.Format(System.String,System.Object[])">
+            <summary>
+            Improves upon <see cref="M:System.String.Format(System.String,System.Object[])"/> to allow a 4th and 5th
+            group in numerical custom formats, for values 1 and -1. See <see cref="M:Uno.Extensions.StringExtensions.Format(System.IFormatProvider,System.String,System.Object[])"/>
+            for details.
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.StringExtensions.Format(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Improves upon <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/> to allow a 4th and 5th
+            group in numerical custom formats, for values 1 and -1. Just like the 3rd group, which applies to value 0,
+            these groups will get used if the first group (positive) or second group (negative) would display the same
+            string as if 1 or -1 was the argument. For example, given the en-US culture, the "{0:C;C;broke;a buck}"
+            format would display "$1.42" for value 1.42, display "broke" for values 0, -0.004 or 0.003, and display
+            "a buck" for values 0.995, 1 or 1.0025.
+            </summary>
+            <param name="provider"></param>
+            <param name="format"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.UriExtensions.EscapeDataString(System.String)">
+            <summary>
+            Converts a string to its escaped representation.
+            This extension bypasses the Uri.EscapeDataString characters limit.
+            </summary>
+            Source: http://stackoverflow.com/questions/6695208/uri-escapedatastring-invalid-uri-the-uri-string-is-too-long
+        </member>
+        <member name="F:Uno.Actions.Null">
+            <summary>
+            An action which does nothing.
+            </summary>
+        </member>
+        <member name="F:Uno.Actions.NullAsync">
+            <summary>
+            An ActionAsync which does nothing.
+            </summary>
+        </member>
+        <member name="M:Uno.Actions.CreateOnce(System.Action)">
+            <summary>
+            Creates an action that will only execute once the provided action, even if called multiple times. This is Thread Safe.
+            </summary>
+            <param name="action">The action to be executed once</param>
+            <returns>An action.</returns>
+        </member>
+        <member name="T:Uno.Actions`1">
+            <summary>
+            Container for stock actions.
+            </summary>
+            <typeparam name="T">The type of the argument for the actions.</typeparam>
+        </member>
+        <member name="F:Uno.Actions`1.Null">
+            <summary>
+            A Null action, that performs nothing.
+            </summary>
+        </member>
+        <member name="F:Uno.Actions`1.NullAsync">
+            <summary>
+            A Null action, that performs nothing.
+            </summary>
+        </member>
+        <member name="F:Uno.Actions`2.Null">
+            <summary>
+            A Null action, that performs nothing.
+            </summary>
+        </member>
+        <member name="F:Uno.Actions`2.NullAsync">
+            <summary>
+            A Null action, that performs nothing.
+            </summary>
+        </member>
+        <member name="T:Uno.CachedTuple">
+            <summary>
+            A tuple implementation that caches the GetHashCode value for faster lookup performance.
+            </summary>
+        </member>
+        <member name="M:Uno.CachedTuple.Create``2(``0,``1)">
+            <summary>
+            Creates a tuple with two values.
+            </summary>
+        </member>
+        <member name="M:Uno.CachedTuple.Create``3(``0,``1,``2)">
+            <summary>
+            Creates a tuple with three values.
+            </summary>
+        </member>
+        <member name="M:Uno.CachedTuple.Create``4(``0,``1,``2,``3)">
+            <summary>
+            Creates a tuple with four values.
+            </summary>
+        </member>
+        <member name="T:Uno.CachedTuple`2">
+            <summary>
+            A tuple with two values implementation that caches the GetHashCode value for faster lookup performance.
+            </summary>
+        </member>
+        <member name="F:Uno.CachedTuple`2.Comparer">
+            <summary>
+            Gets a comparer for the current tuple
+            </summary>
+        </member>
+        <member name="T:Uno.CachedTuple`3">
+            <summary>
+            A tuple with three values implementation that caches the GetHashCode value for faster lookup performance.
+            </summary>
+        </member>
+        <member name="F:Uno.CachedTuple`3.Comparer">
+            <summary>
+            Gets a comparer for the current tuple
+            </summary>
+        </member>
+        <member name="T:Uno.CachedTuple`4">
+            <summary>
+            A tuple with four values implementation that caches the GetHashCode value for faster lookup performance.
+            </summary>
+        </member>
+        <member name="M:Uno.Funcs.Create``1(System.Func{``0})">
+            <summary>
+            Creates a function, to allow for type inference from the returned value.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.Create``2(System.Func{``0,``1})">
+            <summary>
+            Creates a function, to allow for type inference from the returned value.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.Create``3(System.Func{``0,``1,``2})">
+            <summary>
+            Creates a function, to allow for type inference from the returned value.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.Create``4(System.Func{``0,``1,``2,``3})">
+            <summary>
+            Creates a function, to allow for type inference from the returned value.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsync``1(Uno.FuncAsync{``0})">
+            <summary>
+            Creates a parameterless cancellable async function.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsync``2(Uno.FuncAsync{``0,``1})">
+            <summary>
+            Creates a parameterized cancellable async function.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsync``3(Uno.FuncAsync{``0,``1,``2})">
+            <summary>
+            Creates a parameterized cancellable async function.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsync``4(Uno.FuncAsync{``0,``1,``2,``3})">
+            <summary>
+            Creates a parameterized cancellable async function.
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.Create``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a parameterless cancellable async function.
+            </summary>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The source function</param>
+            <returns>A func of the source</returns>
+        </member>
+        <member name="M:Uno.Funcs.Create``2(System.Func{System.Threading.CancellationToken,``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Creates a parameterized cancellable async function.
+            </summary>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The source function</param>
+            <returns>A func of the source</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``1(System.Func{``0})">
+            <summary>
+            Creates a parameterless memoized function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateLockedMemoized``1(System.Func{``0})">
+            <summary>
+            Creates a parameterless thread-safe memoized function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``2(System.Func{``0,``1})">
+            <summary>
+            Creates a parameterized memoized function.
+            </summary>
+            <typeparam name="TParam">The parameter</typeparam>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The function to memoize</param>
+            <returns>The memoized function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``3(System.Func{``0,``1,``2})">
+            <summary>
+            Creates a parameterized memoized function.
+            </summary>
+            <typeparam name="TParam1">The first parameter</typeparam>
+            <typeparam name="TParam2">The second parameter</typeparam>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The function to memoize</param>
+            <returns>The memoized function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``4(System.Func{``0,``1,``2,``3})">
+            <summary>
+            Creates a parameterized memoized function.
+            </summary>
+            <typeparam name="TParam1">The first parameter</typeparam>
+            <typeparam name="TParam2">The second parameter</typeparam>
+            <typeparam name="TParam3">The third parameter</typeparam>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The function to memoize</param>
+            <returns>The memoized function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``5(System.Func{``0,``1,``2,``3,``4})">
+            <summary>
+            Creates a parameterized memoized function.
+            </summary>
+            <typeparam name="TParam1">The first parameter</typeparam>
+            <typeparam name="TParam2">The second parameter</typeparam>
+            <typeparam name="TParam3">The third parameter</typeparam>
+            <typeparam name="TParam4">The fourth parameter</typeparam>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The function to memoize</param>
+            <returns>The memoized function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``6(System.Func{``0,``1,``2,``3,``4,``5})">
+            <summary>
+            Creates a parameterized memoized function.
+            </summary>
+            <typeparam name="TParam1">The first parameter</typeparam>
+            <typeparam name="TParam2">The second parameter</typeparam>
+            <typeparam name="TParam3">The third parameter</typeparam>
+            <typeparam name="TParam4">The fourth parameter</typeparam>
+            <typeparam name="TParam5">The fifth parameter</typeparam>
+            <typeparam name="TResult">The return value</typeparam>
+            <param name="function">The function to memoize</param>
+            <returns>The memoized function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsyncMemoized``1(Uno.FuncAsync{``0})">
+            <summary>
+            Creates a parameterless memoized task providing function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateAsyncMemoized``2(Uno.FuncAsync{``0,``1})">
+            <summary>
+            Creates a parameterless memoized task providing function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a parameterless memoized task providing function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="M:Uno.Funcs.CreateMemoized``2(System.Func{System.Threading.CancellationToken,``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Creates a parameterless memoized task providing function. <seealso cref="T:Uno.Extensions.FuncMemoizeExtensions"/>
+            </summary>
+            <typeparam name="TResult">The returned type</typeparam>
+            <param name="function">The source function</param>
+            <returns>A function</returns>
+        </member>
+        <member name="T:Uno.LegacyAttribute">
+            <summary>
+            Marks a member or a class as legacy. To be used in conjuction with the Obsolete attribute
+            to mark elements as obsolete, but fail compilation based on static analysis rules.
+            </summary>
+        </member>
+        <member name="T:Uno.Null">
+            <summary>
+            A container for a object that has no meaning (replaces void).
+            </summary>
+        </member>
+        <member name="M:Uno.Null.#ctor">
+            <summary>
+            Private constructor, no one will ever construct these things, pass null.
+            </summary>
+        </member>
+    </members>
+</doc>

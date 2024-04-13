@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions.Collections</name>
+    </assembly>
+    <members>
+        <member name="T:Uno.Extensions.CollectionExtensions">
+            <summary>
+            Provides Extensions Methods for ICollection.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddNew``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Adds a new item with the default constructor
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the items of the specified collection to the end of the ICollection.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="collection">Collection in which to insert items.</param>
+            <param name="items">The items to add.</param>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.DisposableAdd``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            Adds an item into the collection and returns an IDisposable which will remove the item when disposed.
+            </summary>
+            <typeparam name="T">Type of the items in collection</typeparam>
+            <param name="collection"></param>
+            <param name="item">The item to add</param>
+            <returns>An IDisposable which will remove the item when disposed</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.Remove``1(System.Collections.Generic.ICollection{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Removes items in a collection that are identified with a predicate.
+            </summary>
+            <typeparam name="T">the type of the items</typeparam>
+            <param name="collection">Collection in which to remove items.</param>
+            <param name="predicate">The predicate used to identify if a item is to be removed or not.</param>
+            <returns>Count of removed items</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.ReplaceWith``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Replaces the items in a collection with a new set of items.
+            </summary>
+            <typeparam name="T">The type of items.</typeparam>
+            <param name="collection">The collection who's content will be replaced.</param>
+            <param name="items">The replacing items.</param>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddDistinct``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            Adds an item to a collection if not already in it.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="item">Item to add</param>
+            <returns>True if the item was added, else false.</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddDistinct``1(System.Collections.Generic.ICollection{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Adds an item to a collection if not already in it using an EqualityComparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="item">Item to add</param>
+            <param name="comparer">Equality comparer to use to determine if item is already in the collection</param>
+            <returns>True if the item was added, else false.</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddDistinct``1(System.Collections.Generic.ICollection{``0},``0,System.Func{``0,``0,System.Boolean})">
+            <summary>
+            Adds an item to a collection if not already in it using a predicate.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="item">Item to add</param>
+            <param name="predicate">Predicate to use to determine if item is already in the collection</param>
+            <returns>True if the item was added, else false.</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddRangeDistinct``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds to a collection the items of an <see cref="T:System.Collections.Generic.IEnumerable`1"/> which are not already in collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="items">Items to add</param>
+            <returns>Count of items added</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddRangeDistinct``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Adds to a collection the items of an <see cref="T:System.Collections.Generic.IEnumerable`1"/> which are not already in collection using an equlaity comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="items">Items to add</param>
+            <param name="comparer">Equality comparer to use to determine if an item is already in the collection</param>
+            <returns>Count of items added</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.AddRangeDistinct``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean})">
+            <summary>
+            Adds to a collection the items of an <see cref="T:System.Collections.Generic.IEnumerable`1"/> which are not already in collection using an equlaity comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="items">Items to add</param>
+            <param name="comparer">Predicate to use to determine if an item is already in the collection</param>
+            <returns>Count of items added</returns>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToArray``2(``0[],System.Func{``0,``1})">
+            <summary>
+            Projects the specified array to another array.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToArray``2(``0[],System.Func{``0,System.Int32,``1})">
+            <summary>
+            Projects the specified array to another array, using the item index.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToArray``2(System.Collections.Generic.ICollection{``0},System.Func{``0,``1})">
+            <summary>
+            Projects the specified collection to an array.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.ToRangeArray``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Create an array from a portion of another array, as a faster equivalent of .Skip().Take().ToArray().
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToList``2(System.Collections.Generic.ICollection{``0},System.Func{``0,``1})">
+            <summary>
+            Projects the specified collection to a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToList``2(System.Collections.Generic.IList{``0},System.Func{``0,``1})">
+            <summary>
+            Projects the specified collection to a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToList``2(System.Collections.Generic.List{``0},System.Func{``0,``1})">
+            <summary>
+            Projects a <see cref="T:System.Collections.Generic.List`1"/>. to an other <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.SelectToList``2(System.Collections.Generic.List{``0},System.Func{``0,System.Int32,``1})">
+            <summary>
+            Projects the specified <see cref="T:System.Collections.Generic.List`1"/> to an other <see cref="T:System.Collections.Generic.List`1"/> with an index.
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.WhereToList``1(System.Collections.Generic.List{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Filters the specified <see cref="T:System.Collections.Generic.List`1"/> using a predicate.
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.CollectionExtensions.ToRangeList``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">
+            <summary>
+            Create a <see cref="T:System.Collections.Generic.List`1"/> from a portion of another <see cref="T:System.Collections.Generic.List`1"/>, as a faster equivalent of .Skip().Take().ToList().
+            </summary>
+            <remarks>This method can be useful when the enumeation of the result requires less allocations.(see <see cref="T:System.Collections.Generic.List`1.Enumerator"/>)</remarks>
+        </member>
+        <member name="M:Uno.Extensions.DictionaryExtensions.UnoGetValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            Gets the value associated with the specified key, or a default value.
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dictionary"></param>
+            <param name="key">The key of the value to get.</param>
+            <param name="defaultValue">Default value if the key does not exsists in dictionary</param>
+            <returns>the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter.</returns>
+        </member>
+        <member name="M:Uno.Extensions.DictionaryExtensions.UnoGetValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>
+            Gets the value associated with the specified key, or a default value.
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dictionary"></param>
+            <param name="key">The key of the value to get.</param>
+            <param name="defaultValue">Default value if the key does not exsists in dictionary</param>
+            <returns>the value associated with the specified key, if the key is found; otherwise, the <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="T:Uno.Extensions.EnumerableExtensions">
+            <summary>
+            Provides Extensions Methods for IEnumerable.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Concat``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Append an item at the end of an enumeration
+            </summary>
+            <remarks>
+            Use .Prepend() to inject before the enumeration
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.PrependEx``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Add an item who will be enumerated first before the real enumeration
+            </summary>
+            <remarks>
+            Use .Concat() to inject at the end of the enumeration
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Except``1(System.Collections.Generic.IEnumerable{``0},``0[])">
+            <summary>
+            Exclude some items from an enumeration
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="items">Items to exclude</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Except``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Exclude some items from an enumeration using an equality comparer
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="equalityComparer">Equality comparer to use to compare items between enumerations</param>
+            <param name="items">Items to exclude</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AreDistinct``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Check if all element in the enumeration are disctinct.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AreDistinct``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Check if all element in the enumeration are distinct.
+            </summary>
+            <typeparam name="T">Type of the items</typeparam>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.MinBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Finds an item in the sequence for which a projected value is minimized.
+            </summary>
+            <typeparam name="TSource">Sequence type.</typeparam>
+            <typeparam name="TComparable">Projected value type.</typeparam>
+            <param name="source">The sequence of items.</param>
+            <param name="selector">Function which projects the sequence into a comparable value.</param>
+            <returns>A tuple containing the minimum item and its projected value. If multiple items have the same projected value, this will return the first.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.MaxBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Finds an item in the sequence for which a projected value is maximized.
+            </summary>
+            <typeparam name="TSource">Sequence type.</typeparam>
+            <typeparam name="TComparable">Projected value type.</typeparam>
+            <param name="source">The sequence of items.</param>
+            <param name="selector">Function which projects the sequence into a comparable value.</param>
+            <returns>A tuple containing the maximum item and its projected value. If multiple items have the same projected value, this will return the first.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Range``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Takes "before" item and "after" item around the "start" item
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Do``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Intercept enumerated elements. SEE REMARKS FOR USAGE!
+            </summary>
+            <remarks>
+            This method is not doing the enumeration,
+            only intercept it when an enumeration occurs.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Trim``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Remove null values while enumerating
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Trim``1(System.Collections.Generic.IEnumerable{System.Nullable{``0}})">
+            <summary>
+            Remove null values while enumerating
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Create an ObservableCollection for an enumeration.
+            </summary>
+            <remarks>
+            The copy is done synchronously, before this method returns.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Safe``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Prevent null enumeration.
+            When null, it's replaced with an empty enumeration of the same type.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.StdDev(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Calculate a Standard Deviation over an enumerator of values.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.Flatten``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Enumerate the item first, followed by items of the predicate
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AllEquals``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Check if all items of an enumerable are equals, using an optional comparer
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AllTrue(System.Collections.Generic.IEnumerable{System.Boolean})">
+            <summary>
+            Determines whether all elements of a sequence are true.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AllTrueOrDefault(System.Collections.Generic.IEnumerable{System.Boolean},System.Boolean)">
+            <summary>
+            Determines whether all elements of a sequence are true.
+            </summary>
+            <param name="defaultValue">Default value if source is null or empty</param>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AnyTrue(System.Collections.Generic.IEnumerable{System.Boolean})">
+            <summary>
+            Determines whether any element of a sequence is true.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.AnyTrueOrDefault(System.Collections.Generic.IEnumerable{System.Boolean},System.Boolean)">
+            <summary>
+            Determines whether any element of a sequence satisfies a condition.
+            </summary>
+            <param name="defaultValue">Default value if source is null or empty</param>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ConsecutiveValueCount``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Count number of consecutive equals values
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionaryDistinct``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with unique keys from an <see cref="T:System.Collections.Generic.IEnumerable`1"/> according to a specified key selector function, and an element selector function.
+            </summary>
+            <typeparam name="TSource">Type of the source enumerable</typeparam>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <typeparam name="TValue">Type of the value of the result dictionary</typeparam>
+            <param name="source">Source enuemrable</param>
+            <param name="keySelector">A function to extract a key from each element.</param>
+            <param name="valueSelector">A transform function to produce a result element value from each element.</param>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that contains values of type TElement selected from the input sequence.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionaryDistinct``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with unique keys from an <see cref="T:System.Collections.Generic.IEnumerable`1"/> according to a specified key selector function, a comparer, and an element selector function.
+            </summary>
+            <typeparam name="TSource">Type of the source enumerable</typeparam>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <typeparam name="TValue">Type of the value of the result dictionary</typeparam>
+            <param name="source">Source enuemrable</param>
+            <param name="keySelector">A function to extract a key from each element.</param>
+            <param name="valueSelector">A transform function to produce a result element value from each element.</param>
+            <param name="equalityComparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that contains values of type TElement selected from the input sequence.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionaryDistinct``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with unique keys from an <see cref="T:System.Collections.Generic.IEnumerable`1"/> according to a specified key selector function.
+            </summary>
+            <typeparam name="TSource">Type of the source enumerable and values of the result dictionary</typeparam>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <param name="source">Source enuemrable</param>
+            <param name="keySelector">A function to extract a key from each element.</param>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that contains values of type TElement selected from the input sequence.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionaryDistinct``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with unique keys from an <see cref="T:System.Collections.Generic.IEnumerable`1"/> according to a specified key selector function, and a comparer.
+            </summary>
+            <typeparam name="TSource">Type of the source enumerable and values of the result dictionary</typeparam>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <param name="source">Source enuemrable</param>
+            <param name="keySelector">A function to extract a key from each element.</param>
+            <param name="equalityComparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that contains values of type TElement selected from the input sequence.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{``0,``1}})">
+            <summary>
+            Creates a Dictionary&lt;TKey,IEnumerable&lt;TSource&gt;&gt; from an IEnumerable&lt;IGrouping&lt;TSource&gt;&gt;;
+            </summary>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <typeparam name="TValue">Type of the value of the result dictionary</typeparam>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{``0,``1}},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates a Dictionary&lt;TKey,IEnumerable&lt;TSource&gt;&gt; from an IEnumerable&lt;IGrouping&lt;TSource&gt;&gt;;
+            </summary>
+            <typeparam name="TKey">Type of the keys of the result dictionary</typeparam>
+            <typeparam name="TValue">Type of the value of the result dictionary</typeparam>
+            <param name="equalityComparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.FullOuterJoin``4(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},``0,``1,System.Collections.Generic.IEqualityComparer{``2})">
+            <summary>
+            Correlates the elements of two sequences based on matching keys, including items without pair from both sides.
+            </summary>
+            <typeparam name="T1">The type of the elements of the first sequence.</typeparam>
+            <typeparam name="T2">The type of the elements of the second sequence.</typeparam>
+            <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+            <typeparam name="TResult">The type of the result elements.</typeparam>
+            <param name="left">The first sequence to join.</param>
+            <param name="right">The second sequence to join.</param>
+            <param name="leftKeySelector">A function to extract the join key from each element of the first sequence.</param>
+            <param name="rightKeySelector">A function to extract the join key from each element of the second sequence.</param>
+            <param name="projection">A function to create a result element from two elements.</param>
+            <param name="defaultLeft">The default value to use to invoke <paramref name="projection"/> when there is no matching element in first sequence.</param>
+            <param name="defaultRight">The default value to use to invoke <paramref name="projection"/> when there is no matching element in second sequence.</param>
+            <param name="keyComparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to hash and compare keys.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that has elements of type <typeparamref name="TResult"/> that are obtained by performing a full outer join on two sequences.</returns>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.SelectManyUntyped``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.IEnumerable})">
+            <summary>
+            A SelectMany that returns a non-generic IEnumerable.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.EnumerableExtensions.SkipLast``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Skips the last <paramref name="count"/> items from an enumerable sequence.
+            </summary>
+            <typeparam name="T">Type of items</typeparam>
+            <param name="source">The source enumerable</param>
+            <param name="count">Count of items to ignore at the end of an enumerable sequence.</param>
+        </member>
+        <member name="P:Uno.Extensions.GroupDescriptor`2.Required">
+            <summary> Group need to be there even if group is empty </summary>
+        </member>
+        <member name="T:Uno.Extensions.Specialized.EnumerableExtensions">
+            <summary>
+            Provides Extensions Methods for IEnumerable.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.Specialized.EnumerableExtensions.ForEach(System.Collections.IEnumerable,System.Action{System.Object})">
+            <summary>
+            Apply an action for every item of an enumerable
+            </summary>
+            <remarks>
+            This method allows looping on every item of the source without enumerating it
+            If enumeration is not a concern, you should avoid using this method if you're doing fuctionnal or declarative programming.
+            </remarks>
+        </member>
+        <member name="T:Uno.Extensions.ListExtensions">
+            <summary>
+            Provides Extensions Methods for IList
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.AsReadOnly``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Returns a readonly instance of the specified list.
+            </summary>
+            <typeparam name="T">The type of the IList</typeparam>
+            <param name="items">The list</param>
+            <returns>A readonly instance of the specified list.</returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.AddOrReplaceRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the items of the specified collection to the end of the ICollection, but only if they
+            are not already present.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="list">List in which to insert items.</param>
+            <param name="items">The items to add.</param>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.AddOrReplaceRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean})">
+            <summary>
+            Adds the items of the specified collection to the end of the ICollection, 
+            and updates existing items if they are found by the predicate
+            </summary>
+            <typeparam name="T">List type</typeparam>
+            <param name="list"></param>
+            <param name="items"></param>
+            <param name="predicate"></param>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.RemoveAllAt``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            Remove all items after <paramref name="index"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.Replace``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean},``0)">
+            <summary>
+            Replace some items in a list using a selector
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="selector">Select items that have to be replaced</param>
+            <param name="replacement">Teh remplacement item</param>
+            <returns>Number of items replaced</returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.ToDivergentEnumerable``1(System.Collections.Generic.IList{``0},System.Int32)">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEnumerable`1"/> by enumerating the given list both backwards and forwards, starting at the given index
+            </summary>
+            <param name="list">List to enumerate</param>
+            <param name="startingAt">Index to start enumerating from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.ToDivergentEnumerable``1(System.Collections.Generic.IReadOnlyList{``0},System.Int32)">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEnumerable`1"/> by enumerating the given list both backwards and forwards, starting at the given index
+            </summary>
+            <param name="list">List to enumerate</param>
+            <param name="startingAt">Index to start enumerating from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.ContainsIndex``1(System.Collections.Generic.IList{``0},System.Int32)">
+            <summary>
+            Gets wether a list contains a given index
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">List to test</param>
+            <param name="index">Index to search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.ContainsIndex``1(System.Collections.Generic.IReadOnlyList{``0},System.Int32)">
+            <summary>
+            Gets wether a list contains a given index
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">List to test</param>
+            <param name="index">Index to search</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Uno.Extensions.ListExtensions.FindNearestItem``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean},System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:Uno.Extensions.ListExtensions.FindNearestItem``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Boolean},System.Int32)" -->
+        <member name="M:Uno.Extensions.ListExtensions.IndexOf(System.Collections.IList,System.Object,System.Collections.IEqualityComparer)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="list">The source list to look into.</param>
+            <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
+            <param name="comparer">The comparer to use to locate the <paramref name="value" />.</param>
+            <returns>The index of value if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Uno.Extensions.ListExtensions.SequenceKeyEqual``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Determines whether two lists are key-equal, using the default <see cref="T:Uno.Equality.KeyEqualityComparer"/> for <see cref="T:Uno.Equality.IKeyEquatable"/>.
+            </summary>
+            <typeparam name="T">The type of the elements of the input sequences.</typeparam>
+            <param name="first">The first list.</param>
+            <param name="second">The second list.</param>
+            <returns>True if the two source lists are of equal length and their corresponding elements are key-equal; otherwise false.</returns>
+        </member>
+        <member name="M:Uno.Extensions.ObservableCollectionExtensions.Update``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Updates an ObservableCollection using the provided enumerable, resulting in equal sequences.
+            </summary>
+            <param name="collection">The collection to update</param>
+            <param name="updated">The enumerable to update from</param>
+            <param name="tryDispose">Tells the method to try disposing removed items and new items that were not added.
+            <param name="comparer"></param>
+            <em>ONLY PASS true WHEN USING DIFFERENT INSTANCES THAT USE EQUALS TO MATCH EXISTING INSTANCES. Matching items are not compared by reference.</em></param>
+            <remarks>If items come from an AVVM, make sure it's not configured to automatically dispose all previous items. Otherwise, this extension
+            will keep items in the collection that are getting disposed by the AVVM.</remarks>
+        </member>
+        <member name="M:Uno.Extensions.ObservableCollectionExtensions.UpdateWithResults``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Updates an ObservableCollection using the provided enumerable, resulting in equal sequences.
+            </summary>
+            <param name="collection">The collection to update</param>
+            <param name="updated">The enumerable to update from</param>
+            <param name="tryDispose">Tells the method to try disposing removed items and new items that were not added.
+            <param name="comparer"></param>
+            <em>ONLY PASS true WHEN USING DIFFERENT INSTANCES THAT USE EQUALS TO MATCH EXISTING INSTANCES. Matching items are not compared by reference.</em></param>
+            <remarks>If items come from an AVVM, make sure it's not configured to automatically dispose all previous items. Otherwise, this extension
+            will keep items in the collection that are getting disposed by the AVVM.</remarks>
+            <returns>A instance of <see cref="T:Uno.Extensions.ObservableCollectionUpdateResults`1"/> which details what the update has done.</returns>
+        </member>
+        <member name="M:Uno.Extensions.ObservableCollectionExtensions.UpdateAsync``1(System.Collections.Generic.IList{``0},System.Threading.CancellationToken,System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Updates an ObservableCollection using the provided enumerable, resulting in equal sequences. For any item that was
+            kept for an equal new instance, UpdateAsync is called if it implements IUpdatable.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="ct"></param>
+            <param name="updated"></param>
+            <param name="tryDispose"></param>
+            <param name="comparer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ObservableCollectionExtensions.InternalUpdate``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Boolean,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Private version for having a single implementation of adds, removes and updates, but be able to plug async IUpdatable.UpdateAsync call.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection"></param>
+            <param name="updated"></param>
+            <param name="tryDispose"></param>
+            <param name="needKept">If true, returns kept item pairs. New items that were kept are <em>NOT</em> disposed.
+            We assume the caller will perform the async update, then dispose NewItem.</param>
+            <param name="comparer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Uno.Extensions.ObservableCollectionUpdateResults`1">
+            <summary>
+            Provides the results of a call to <see cref="M:Uno.Extensions.ObservableCollectionExtensions.UpdateWithResults``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Collections.Generic.IEqualityComparer{``0})"/> 
+            with details about what what was added, moved and removed.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Uno.Extensions.ObservableCollectionUpdateResults`1.Added">
+            <summary>
+            Gets the added items
+            </summary>
+        </member>
+        <member name="P:Uno.Extensions.ObservableCollectionUpdateResults`1.Moved">
+            <summary>
+            Gets the moved items
+            </summary>
+        </member>
+        <member name="P:Uno.Extensions.ObservableCollectionUpdateResults`1.Removed">
+            <summary>
+            Gets the removed items
+            </summary>
+        </member>
+        <member name="T:Uno.IUpdatable`1">
+            <summary>
+            Identifies an object that can get refreshed from another object of the same type. 	/// 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <remarks> This is useful for items bound to the view. When a newer instance with its Equals
+            returning true for the old item comes in play, the old item is kept, but updated from that
+            new instance.</remarks>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToSpan``2(System.Collections.Generic.List{``0},System.Span{``1},System.Func{``0,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Collections.Generic.List`1"/> to a pre-allocated <see cref="T:System.Span`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Collections.Generic.List`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToSpan``2(System.Span{``0},System.Span{``1},System.Func{``0,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Span`1"/> to a pre-allocated <see cref="T:System.Span`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToSpan``2(System.Span{``0},System.Span{``1},System.Func{``0,System.Int32,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Span`1"/> to a pre-allocated <see cref="T:System.Span`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/> with the index of the value to project</param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToSpan``2(``0[],System.Span{``1},System.Func{``0,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Array"/> to a pre-allocated <see cref="T:System.Span`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.WhereToSpan``1(System.Span{``0},System.Span{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Filters the values of a <see cref="T:System.Span`1"/> to a pre-allocated <see cref="T:System.Span`1"/>.
+            </summary>
+            <typeparam name="TValue">The type of values to filter</typeparam>
+            <param name="span">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="target">The output span</param>
+            <param name="predicate">A predicate to filter the values</param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToMemory``2(System.Span{``0},System.Func{``0,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Span`1"/> to a new <see cref="T:System.Memory`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SelectToMemory``2(System.Collections.Generic.IList{``0},System.Func{``0,``1})">
+            <summary>
+            Selects the values of a <see cref="T:System.Collections.Generic.IList`1"/> to a new <see cref="T:System.Memory`1"/>.
+            </summary>
+            <typeparam name="TIn">The input type</typeparam>
+            <typeparam name="TOut">The output type</typeparam>
+            <param name="list">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="span">The output span</param>
+            <param name="selector">A selector method that projects <typeparamref name="TIn"/> to <typeparamref name="TOut"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.WhereToMemory``1(System.Span{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Filters the values of a <see cref="T:System.Span`1"/> to a new <see cref="T:System.Memory`1"/>.
+            </summary>
+            <typeparam name="TValue">The type of values to filter</typeparam>
+            <param name="span">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="predicate">A predicate to filter the values</param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.WhereToMemory``1(System.Span{``0},System.Func{``0,System.Int32,System.Boolean})">
+            <summary>
+            Filters the values of a <see cref="T:System.Span`1"/> to a new <see cref="T:System.Memory`1"/>.
+            </summary>
+            <typeparam name="TValue">The type of values to filter</typeparam>
+            <param name="span">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="predicate">A predicate to filter the values with the index of the value to filter</param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.WhereToMemory``2(System.Span{``0},System.Func{``0,System.Boolean},System.Func{``0,``1})">
+            <summary>
+            Filters the values of a <see cref="T:System.Span`1"/>, then projects the values to a new <see cref="T:System.Memory`1"/>.
+            </summary>
+            <typeparam name="TValue">The type of values to filter</typeparam>
+            <param name="span">The <see cref="T:System.Span`1"/> to be projected</param>
+            <param name="predicate">A predicate to filter the values with the index of the value to filter</param>
+            <param name="selector">A selector method that projects <typeparamref name="TValue"/> to <typeparamref name="TResult"/></param>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.Count``1(System.Span{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Provides a Count of values given a predicate
+            </summary>
+            <typeparam name="T">The type of the values</typeparam>
+            <param name="span">The span to count the values in</param>
+            <param name="predicate">The predicate to filter the values</param>
+            <returns>The count of values</returns>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.Any``1(System.Span{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Determines if the provided span contains values given a predicate
+            </summary>
+            <typeparam name="T">The type of the values</typeparam>
+            <param name="span">The span to analyze</param>
+            <param name="predicate">The predicate to filter the values</param>
+            <returns><c>true</c> if the predicate returned true, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.ToDictionary``3(System.Span{``0},System.Func{``0,``1},System.Func{``0,``2})">
+            <summary>
+            Creates a new <see cref="T:System.Collections.Generic.Dictionary`2"/> from the values of a span.
+            </summary>
+            <param name="span">The input span</param>
+            <param name="keySelector">The selector to create a key of the dictionary</param>
+            <param name="valueSelector">The selector to create the value with the corresponding key</param>
+            <returns>A new <see cref="T:System.Collections.Generic.Dictionary`2"/></returns>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.Sum(System.Span{System.Double})">
+            <summary>
+            Computes the sum of all the values of a <see cref="T:System.Span`1"/> where <c>T</c> is a double
+            </summary>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.Sum``1(System.Span{``0},System.Func{``0,System.Double})">
+            <summary>
+            Computes the sum of all the values of a <see cref="T:System.Span`1"/>, using a predicate to get each value.
+            </summary>
+            <typeparam name="TIn"></typeparam>
+            <param name="span">The span to use</param>
+            <param name="selector">A selector to get the value</param>
+            <returns>The sum of all the projected values</returns>
+        </member>
+        <member name="M:Uno.Collections.MemoryExtensions.SliceClamped``1(System.Span{``0},System.Int32,System.Int32)">
+            <summary>
+            Creates a slice for which the <paramref name="start"/> and <paramref name="range"/> are clamped to the size of <paramref name="span"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="span">The span to slice</param>
+            <param name="start">The starting index</param>
+            <param name="range">The length of the slice</param>
+            <returns>A slice of the source span</returns>
+        </member>
+        <member name="T:Uno.Collections.UnsafeWeakAttachedDictionary`2">
+            <summary>
+            A dictionary of values that live as long as the owner is alive. This class is not-threadsafe and must always be used for the same thread.
+            </summary>
+            <typeparam name="TOwner">The type of the owner</typeparam>
+            <typeparam name="TKey">The key type</typeparam>
+        </member>
+        <member name="M:Uno.Collections.UnsafeWeakAttachedDictionary`2.GetValue``1(`0,`1,System.Func{``0})">
+            <summary>
+            Gets the value associated with the specified key, for the specified owner instance.
+            </summary>
+            <param name="owner">The owner instance for the specified key</param>
+            <param name="key">The key to get</param>
+            <param name="defaultSelector">The selector called when the value does not exist for the specified owner. Otherwise, default(TValue) is used.</param>
+            <returns>The value</returns>
+        </member>
+        <member name="M:Uno.Collections.UnsafeWeakAttachedDictionary`2.SetValue``1(`0,`1,``0)">
+            <summary>
+            Sets the value for the specified key, for the specified owner.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="owner"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Uno.Collections.UnsafeWeakAttachedDictionary`2.GetValuesForOwner(`0)">
+            <summary>
+            Get the values dictionary for the specified owner
+            </summary>
+            <param name="owner">The owner of the values</param>
+            <returns>A values dictionary</returns>
+        </member>
+        <member name="M:Uno.Collections.UnsafeWeakAttachedDictionary`2.CopyValues(`0,`0)">
+            <summary>
+            Copies all values from one owner to another.
+            </summary>
+            <param name="existingOwner">The <typeparamref name="TOwner"/> to take values from.</param>
+            <param name="newOwner">The <typeparamref name="TOwner"/> to assign values to.</param>
+        </member>
+        <member name="T:Uno.Collections.WeakAttachedDictionary`2">
+            <summary>
+            A dictionary of values that live as long as the owner is alive. This class is thread-safe.
+            </summary>
+            <typeparam name="TOwner">The type of the owner</typeparam>
+            <typeparam name="TKey">The key type</typeparam>
+        </member>
+        <member name="M:Uno.Collections.WeakAttachedDictionary`2.GetValue``1(`0,`1,System.Func{``0})">
+            <summary>
+            Gets the value associated with the specified key, for the specified owner instance.
+            </summary>
+            <param name="owner">The owner instance for the specified key</param>
+            <param name="key">The key to get</param>
+            <param name="defaultSelector">The selector called when the value does not exist for the specified owner. Otherwise, default(TValue) is used.</param>
+            <returns>The value</returns>
+        </member>
+        <member name="M:Uno.Collections.WeakAttachedDictionary`2.GetValue``1(`0,`1,System.Func{`1,``0})">
+            <summary>
+            Gets the value associated with the specified key, for the specified owner instance.
+            </summary>
+            <param name="owner">The owner instance for the specified key</param>
+            <param name="key">The key to get</param>
+            <param name="defaultSelector">The selector called when the value does not exist for the specified owner. Otherwise, default(TValue) is used.</param>
+            <returns>The value</returns>
+        </member>
+        <member name="M:Uno.Collections.WeakAttachedDictionary`2.SetValue``1(`0,`1,``0)">
+            <summary>
+            Sets the value for the specified key, for the specified owner.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="owner"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Uno.Collections.WeakAttachedDictionary`2.CopyValues(`0,`0)">
+            <summary>
+            Copies all values from one owner to another.
+            </summary>
+            <param name="existingOwner">The <typeparamref name="TOwner"/> to take values from.</param>
+            <param name="newOwner">The <typeparamref name="TOwner"/> to assign values to.</param>
+        </member>
+    </members>
+</doc>

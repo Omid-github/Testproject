@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions.Disposables</name>
+    </assembly>
+    <members>
+        <member name="T:Uno.Disposables.AnonymousDisposable">
+            <summary>
+            Represents an Action-based disposable.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.AnonymousDisposable.#ctor(System.Action)">
+            <summary>
+            Constructs a new disposable with the given action used for disposal.
+            </summary>
+            <param name="dispose">Disposal action which will be run upon calling Dispose.</param>
+        </member>
+        <member name="P:Uno.Disposables.AnonymousDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.AnonymousDisposable.Dispose">
+            <summary>
+            Calls the disposal action if and only if the current instance hasn't been disposed yet.
+            </summary>
+        </member>
+        <member name="T:Uno.Disposables.CancellationDisposable">
+            <summary>
+            Represents a disposable resource that has an associated <seealso cref="T:System.Threading.CancellationToken"/> that will be set to the cancellation requested state upon disposal.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CancellationDisposable.#ctor(System.Threading.CancellationTokenSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CancellationDisposable"/> class that uses an existing <seealso cref="T:System.Threading.CancellationTokenSource"/>.
+            </summary>
+            <param name="cts"><seealso cref="T:System.Threading.CancellationTokenSource"/> used for cancellation.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="cts"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CancellationDisposable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CancellationDisposable"/> class that uses a new <seealso cref="T:System.Threading.CancellationTokenSource"/>.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.CancellationDisposable.Token">
+            <summary>
+            Gets the <see cref="T:System.Threading.CancellationToken"/> used by this CancellationDisposable.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CancellationDisposable.Dispose">
+            <summary>
+            Cancels the underlying <seealso cref="T:System.Threading.CancellationTokenSource"/>.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.CancellationDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="T:Uno.Disposables.CompositeDisposable">
+            <summary>
+            Represents a group of disposable resources that are disposed together.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CompositeDisposable"/> class with no disposables contained by it initially.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CompositeDisposable"/> class with the specified number of disposables.
+            </summary>
+            <param name="capacity">The number of disposables that the new CompositeDisposable can initially store.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity"/> is less than zero.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.#ctor(System.IDisposable[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.#ctor(System.Collections.Generic.IEnumerable{System.IDisposable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is null.</exception>
+        </member>
+        <member name="P:Uno.Disposables.CompositeDisposable.Count">
+            <summary>
+            Gets the number of disposables contained in the CompositeDisposable.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.Add(System.IDisposable)">
+            <summary>
+            Adds a disposable to the CompositeDisposable or disposes the disposable if the CompositeDisposable is disposed.
+            </summary>
+            <param name="item">Disposable to add.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.Remove(System.IDisposable)">
+            <summary>
+            Removes and disposes the first occurrence of a disposable from the CompositeDisposable.
+            </summary>
+            <param name="item">Disposable to remove.</param>
+            <returns>true if found; false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.Dispose">
+            <summary>
+            Disposes all disposables in the group and removes them from the group.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.Clear">
+            <summary>
+            Removes and disposes all disposables from the CompositeDisposable, but does not dispose the CompositeDisposable.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.Contains(System.IDisposable)">
+            <summary>
+            Determines whether the CompositeDisposable contains a specific disposable.
+            </summary>
+            <param name="item">Disposable to search for.</param>
+            <returns>true if the disposable was found; otherwise, false.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.CopyTo(System.IDisposable[],System.Int32)">
+            <summary>
+            Copies the disposables contained in the CompositeDisposable to an array, starting at a particular array index.
+            </summary>
+            <param name="array">Array to copy the contained disposables to.</param>
+            <param name="arrayIndex">Target index at which to copy the first disposable of the group.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than zero. -or - <paramref name="arrayIndex"/> is larger than or equal to the array length.</exception>
+        </member>
+        <member name="P:Uno.Disposables.CompositeDisposable.IsReadOnly">
+            <summary>
+            Always returns false.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the CompositeDisposable.
+            </summary>
+            <returns>An enumerator to iterate over the disposables.</returns>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposable.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the CompositeDisposable.
+            </summary>
+            <returns>An enumerator to iterate over the disposables.</returns>
+        </member>
+        <member name="P:Uno.Disposables.CompositeDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.CompositeDisposableExtensions.Add(Uno.Disposables.CompositeDisposable,System.Action)">
+            <summary>
+            Adds an action to be executed when the CompositeDisposable is disposed.
+            </summary>
+            <param name="disposable">The composite disposable instance</param>
+            <param name="action">The action to execute</param>
+            <returns>The source composite disposable</returns>
+        </member>
+        <member name="T:Uno.Disposables.ConditionalDisposable">
+            <summary>
+            A disposable that can call an action when a dependent object has been collected.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.ConditionalDisposable.#ctor(System.Object,System.Action,System.WeakReference)">
+            <summary>
+            Creates a <see cref="T:Uno.Disposables.ConditionalDisposable"/> instance using 
+            <paramref name="target"/> as a reference for its lifetime.
+            </summary>
+            <param name="action">The action to be executed when target has been collected</param>
+            <param name="conditionSource">An optional secondary reference, used to avoid calling action if it has been collected</param>
+            <param name="target">The instance to use to keep the disposable alive</param>
+        </member>
+        <member name="T:Uno.Disposables.DefaultDisposable">
+            <summary>
+            Represents a disposable that does nothing on disposal.
+            </summary>
+        </member>
+        <member name="F:Uno.Disposables.DefaultDisposable.Instance">
+            <summary>
+            Singleton default disposable.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.DefaultDisposable.Dispose">
+            <summary>
+            Does nothing.
+            </summary>
+        </member>
+        <member name="T:Uno.Disposables.Disposable">
+            <summary>
+            Provides a set of static methods for creating Disposables.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.Disposable.Empty">
+            <summary>
+            Gets the disposable that does nothing when disposed.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.Disposable.Create(System.Action)">
+            <summary>
+            Creates a disposable object that invokes the specified action when disposed.
+            </summary>
+            <param name="dispose">Action to run during the first call to <see cref="M:System.IDisposable.Dispose"/>. The action is guaranteed to be run at most once.</param>
+            <returns>The disposable object that runs the given action upon disposal.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="dispose"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensions.DisposeWith``1(``0,System.Collections.Generic.ICollection{System.IDisposable})">
+            <summary>
+            Register an object who implements IDisposable to be disposed by a CompositeDisposable.
+            </summary>
+            <remarks>
+            The parameter could be anything who implements ICollection&lt;IDisposable&gt;.
+            This extension is designed for usage in a fluent declaration.
+            </remarks>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensions.DisposeWith``1(``0,Uno.Disposables.SerialDisposable)">
+            <summary>
+            Register an object who implements IDisposable to be disposed by a SerialDisposable.
+            </summary>
+            <remarks>
+            This extension is designed for usage in a fluent declaration.
+            </remarks>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensions.SafeDispose(System.IDisposable)">
+            <summary>
+            Dispose the object if not null
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensions.TryDispose(System.Object)">
+            <summary>
+            Dispose the object if not null and if it implements IDisposable
+            </summary>
+            <returns>
+            True means the object was successfully disposed.
+            </returns>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensions.DisposeAll``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Dispose all items of an enumerable sequence
+            <remarks>IF one dispose fails, continue other an raise a single Aggregate exception</remarks>
+            </summary>
+            <exception cref="T:System.AggregateException">Raised if any dispose fails</exception>
+        </member>
+        <member name="T:Uno.Disposables.ICancelable">
+            <summary>
+            Disposable resource with dipsosal state tracking.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.ICancelable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="T:Uno.Disposables.IExtensibleDisposable">
+            <summary>
+            Represents a disposable object on which some external disposables can be linked to, in order to share its lifetime.
+            <remarks>
+            Default implementation:<br />
+            <br />
+            private readonly CompositeDisposable _subscriptions = new CompositeDisposable();<br />
+            public IDisposable RegisterExtension(IDisposable disposable) => _subscriptions.DisposableAdd(disposable);<br />
+            public void Dispose() => _subscriptions.Dispose();
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.IExtensibleDisposable.Extensions">
+            <summary>
+            Currently registered extensions
+            </summary>
+            <remarks>
+            To get a known service, use Extensions.<see cref="M:System.Linq.Enumerable.OfType``1(System.Collections.IEnumerable)"/>.
+            </remarks>
+        </member>
+        <member name="M:Uno.Disposables.IExtensibleDisposable.RegisterExtension``1(``0)">
+            <summary>
+            Registers an extension and links its lifetime (disposal) with the lifetime of the extended disposable
+            </summary>
+            <remarks>
+            The extension will be disposed with the extended disposable or when it's unregistered.
+            To unregister, dispose the returned disposable.  You can discard the
+            returned disposable if you're not planning to unregister the extension.
+            </remarks>
+        </member>
+        <member name="T:Uno.Disposables.RefCountDisposable">
+            <summary>
+            Represents a disposable resource that only disposes its underlying disposable resource when all <see cref="M:Uno.Disposables.RefCountDisposable.GetDisposable">dependent disposable objects</see> have been disposed.
+            </summary>
+        </member>
+        <member name="F:Uno.Disposables.RefCountDisposable._count">
+            <summary>
+            Holds the number of active child disposables and the
+            indicator bit (31) if the main _disposable has been marked
+            for disposition.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.RefCountDisposable.#ctor(System.IDisposable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.RefCountDisposable"/> class with the specified disposable.
+            </summary>
+            <param name="disposable">Underlying disposable.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposable"/> is null.</exception>
+        </member>
+        <member name="M:Uno.Disposables.RefCountDisposable.#ctor(System.IDisposable,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.RefCountDisposable"/> class with the specified disposable.
+            </summary>
+            <param name="disposable">Underlying disposable.</param>
+            <param name="throwWhenDisposed">Indicates whether subsequent calls to <see cref="M:Uno.Disposables.RefCountDisposable.GetDisposable"/> should throw when this instance is disposed.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposable"/> is null.</exception>
+        </member>
+        <member name="P:Uno.Disposables.RefCountDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.RefCountDisposable.GetDisposable">
+            <summary>
+            Returns a dependent disposable that when disposed decreases the refcount on the underlying disposable.
+            </summary>
+            <returns>A dependent disposable contributing to the reference count that manages the underlying disposable's lifetime.</returns>
+            <exception cref="T:System.ObjectDisposedException">This instance has been disposed and is configured to throw in this case by <see cref="M:Uno.Disposables.RefCountDisposable.#ctor(System.IDisposable,System.Boolean)"/>.</exception>
+        </member>
+        <member name="M:Uno.Disposables.RefCountDisposable.Dispose">
+            <summary>
+            Disposes the underlying disposable only when all dependent disposables have been disposed.
+            </summary>
+        </member>
+        <member name="T:Uno.Disposables.SerialDisposable">
+            <summary>
+            Represents a disposable resource whose underlying disposable resource can be replaced by another disposable resource, causing automatic disposal of the previous underlying disposable resource.
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.SerialDisposable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Uno.Disposables.SerialDisposable"/> class.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.SerialDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="P:Uno.Disposables.SerialDisposable.Disposable">
+            <summary>
+            Gets or sets the underlying disposable.
+            </summary>
+            <remarks>If the SerialDisposable has already been disposed, assignment to this property causes immediate disposal of the given disposable object. Assigning this property disposes the previous disposable object.</remarks>
+        </member>
+        <member name="M:Uno.Disposables.SerialDisposable.Dispose">
+            <summary>
+            Disposes the underlying disposable as well as all future replacements.
+            </summary>
+        </member>
+        <member name="T:Uno.NullDisposable">
+            <summary>
+            An empty implementation of the IDisposable class.
+            </summary>
+        </member>
+        <member name="F:Uno.NullDisposable.Instance">
+            <summary>
+            Provider for a instance of the NullDisposable
+            </summary>
+        </member>
+        <member name="M:Uno.NullDisposable.#ctor">
+            <summary>
+            Private constructor, use Instance.
+            </summary>
+        </member>
+        <member name="M:Uno.NullDisposable.Dispose">
+            <summary>
+            See IDisposable.
+            </summary>
+        </member>
+    </members>
+</doc>

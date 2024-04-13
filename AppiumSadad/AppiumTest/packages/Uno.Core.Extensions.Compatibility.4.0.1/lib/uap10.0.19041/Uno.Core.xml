@@ -1,0 +1,1499 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions.Compatibility</name>
+    </assembly>
+    <members>
+        <member name="T:Uno.Extensions.GroupingExtensions">
+            <summary>
+            Provides Extensions Methods for IGrouping.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.GroupingExtensions.ToGroupedDictionary``2(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{``0,``1}})">
+            <summary>
+            Adapts a IEnumarable of a IGrouping into a IDictionary.
+            </summary>
+            <typeparam name="TKey">The type of the Key.</typeparam>
+            <typeparam name="TElement">The type of the grouped element.</typeparam>
+            <param name="items">The groupings to adapt.</param>
+            <returns>A Dictionary containing the contents of the grouping.</returns>
+        </member>
+        <member name="M:Uno.Extensions.DateTimeExtensions.FromUnixTimeSeconds(System.Int64,System.TimeSpan)">
+            <summary>
+            Creates a DateTimeOffset from a standard Unix timestamp and offset
+            </summary>
+            <param name="seconds">Number of seconds since the 1970/01/01 00:00 UTC</param>
+            <param name="offset">Offset of the DateTimeOffset</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.DateTimeExtensions.FromUnixTimeMilliseconds(System.Int64,System.TimeSpan)">
+            <summary>
+            Creates a DateTimeOffset from a standard Unix timestamp and offset
+            </summary>
+            <param name="seconds">Number of seconds since the 1970/01/01 00:00 UTC</param>
+            <param name="offset">Offset of the DateTimeOffset</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ExceptionExtensions.GetPossibleInnerException``1(System.Exception)">
+            <summary>
+            Determines whether the exception is of the specified type. 
+            In the case of an <see cref="T:System.AggregateException"/>, it looks in the inner exceptions.
+            </summary>
+            <param name="exception">Exception to test</param>
+            <typeparam name="TException">The type of the exception to look for</typeparam>
+            <returns>The exception instance if found, null otherwise</returns>
+        </member>
+        <member name="M:Uno.Extensions.ExceptionExtensions.IsOrContainsExceptionType(System.Exception,System.Type)">
+            <summary>
+            Determines whether the exception is of the specified type. 
+            In the case of an <see cref="T:System.AggregateException"/>, it looks in the inner exceptions.
+            </summary>
+            <param name="exception">Exception to test</param>
+            <param name="exceptionType">Type of exception to match</param>
+            <returns>True if the exception is or contains an exception of the specified type</returns>
+        </member>
+        <member name="M:Uno.Extensions.ExceptionExtensions.IsOrContainsExceptionType``1(System.Exception)">
+            <summary>
+            Determines whether the exception is of the specified type. 
+            In the case of an <see cref="T:System.AggregateException"/>, it looks in the inner exceptions .
+            </summary>
+            <typeparam name="TException">Type of exception to match</typeparam>
+            <param name="exception">Exception to test</param>
+            <returns>True if the exception is or contains an exception of the specified type</returns>
+        </member>
+        <member name="T:Uno.Extensions.FuncAsyncExtensions">
+            <summary>
+            Extensions of <see cref="!:FuncAsync"/>.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.FuncAsyncExtensions.SafeInvoke``1(Uno.FuncAsync{``0},System.Threading.CancellationToken)">
+            <summary>
+            Invoke the <paramref name="func"/> if not null.
+            </summary>
+            <param name="func">Func to invoke</param>
+            <param name="ct">A CanellationToken</param>
+            <returns>The result of func, or default(TResult) if the func was null.</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncAsyncExtensions.SafeInvoke``2(Uno.FuncAsync{``0,``1},System.Threading.CancellationToken,``0)">
+            <summary>
+            Invoke the <paramref name="func"/> if not null.
+            </summary>
+            <param name="func">Func to invoke</param>
+            <param name="ct">A CanellationToken</param>
+            <param name="param">Parameter of func</param>
+            <returns>The result of func, or default(TResult) if the func was null.</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncAsyncExtensions.LockInvocation``1(Uno.FuncAsync{``0},Uno.Extensions.InvocationLockingMode)">
+            <summary>
+            Prevents parallel execution of the FuncAsync
+            </summary>
+            <param name="func">Func to lock</param>
+            <param name="mode">Mode to use for locking</param>
+            <returns>A FuncAsync which cannot have nmultiple instance running at a same time</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncAsyncExtensions.LockInvocation``2(Uno.FuncAsync{``0,``1},Uno.Extensions.InvocationLockingMode)">
+            <summary>
+            Prevents parallel execution of the FuncAsync for a SAME PARAMETER
+            </summary>
+            <param name="func">Func to lock</param>
+            <param name="mode">Mode to use for locking FOR A SAME PARAMETER</param>
+            <returns>A FuncAsync which cannot have nmultiple instance running at a same time</returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensionsLegacy.AsMemoized``2(System.Func{System.Threading.CancellationToken,``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Creates a memoizer with one parameter for the the specified task provider. The task provider is guaranteed to be executed only once per parameter instance.
+            </summary>
+            <typeparam name="TResult">The return value type</typeparam>
+            <typeparam name="TParam"></typeparam>
+            <param name="func">A function that will call the create the task.</param>
+            <returns>A function that will return a task </returns>
+        </member>
+        <member name="M:Uno.Extensions.FuncMemoizeExtensionsLegacy.AsWeakLockedMemoized``2(System.Func{``0,``1})">
+            <summary>
+            Memoizer with one parameter (kept as weak reference), used to perform a lazy-cached evaluation. (see http://en.wikipedia.org/wiki/Memoization)
+            </summary>
+            <typeparam name="TParam">The return type to memoize</typeparam>
+            <param name="func">the function to evaluate</param>
+            <returns>A memoized value</returns>
+        </member>
+        <member name="P:Uno.Extensions.IIndentedStringBuilder.CurrentLevel">
+            <summary>
+            Gets the current indentation level
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.Append(System.String)">
+            <summary>
+            Appends text using the current indentation level
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.AppendFormat(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Appends formatted text using the current indentation level
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.AppendLine">
+            <summary>
+            Appends a line using the current indentation level 
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.AppendLine(System.String)">
+            <summary>
+            Writes the provided text and adds line using the current indentation level 
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.Block(System.Int32)">
+            <summary>
+            Creates an indentation block
+            </summary>
+            <param name="count">The indentation level of the new block.</param>
+            <returns>A disposable that will close the block</returns>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.Block(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Creates an indentation block, e.g. using a C# curly braces.
+            </summary>
+            <returns>A disposable that will close the block</returns>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.Indent(System.Int32)">
+            <summary>
+            Adds an indentation 
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.IIndentedStringBuilder.ToString">
+            <summary>
+            Provides a string representing the complete builder.
+            </summary>
+        </member>
+        <member name="T:Uno.Extensions.IndentedStringBuilder">
+            <summary>
+            A C# code indented builder.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.IndentedStringBuilder.AppendLine">
+            <summary>
+            Appends a newline.
+            </summary>
+            <remarks>
+            This method presents correct behavior, as opposed to its <see cref="M:Uno.Extensions.IndentedStringBuilder.AppendLine(System.String)"/>
+            overload. Therefore, this method should be used whenever a newline is desired.
+            </remarks>
+        </member>
+        <member name="M:Uno.Extensions.IndentedStringBuilder.AppendLine(System.String)">
+            <summary>
+            Appends the given string, *without* appending a newline at the end.
+            </summary>
+            <param name="text">The string to append.</param>
+            <remarks>
+            Even though this method seems like it appends a newline, it doesn't. To append a
+            newline, call <see cref="M:Uno.Extensions.IndentedStringBuilder.AppendLine"/> after this method, as the parameterless
+            overload has the correct behavior.
+            </remarks>
+        </member>
+        <member name="T:Uno.Extensions.InvocationLockingMode">
+            <summary>
+            Modes for asynchronous action / func invocation lock
+            </summary>
+        </member>
+        <member name="F:Uno.Extensions.InvocationLockingMode.Serial">
+            <summary>
+            Invocations are queued and sequencially
+            </summary>
+        </member>
+        <member name="F:Uno.Extensions.InvocationLockingMode.Share">
+            <summary>
+            Invocation re-use result of any pending running instance
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.ObjectExtensions.Apply``2(``0,System.Func{``0,``1})">
+            <summary>
+            A helper method to allow for locally defined extension-method like methods. Avoids the creation of an external static class
+            in the context of fluent expressions.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.ObjectExtensions.Apply``1(``0,System.Action{``0})">
+            <summary>
+            A helper method that allows the execution of an action in a fluent expression.
+            </summary>
+            <param name="action">The action to execute on the source object</param>
+            <returns>The source instance</returns>
+        </member>
+        <member name="M:Uno.Extensions.ObjectExtensions.Apply``1(``0,System.Boolean,System.Action{``0})">
+            <summary>
+            A helper method that allows the execution of an action in a fluent expression. The action will be executed if the condition is true.
+            </summary>
+            <param name="condition">A boolean value that indicates if the action should be executed.</param>
+            <param name="action">The action to execute, the parameter will contain source</param>
+            <returns>Returns the source instance</returns>
+        </member>
+        <member name="M:Uno.Extensions.ObjectExtensions.IsOneOf``1(``0,``0[])">
+            <summary>
+            Gets a boolean value that determines if a specific value is within a list of accepted values.
+            Use this when it's not necessary or when it's overkill to declare the list of accepted values
+            as a readonly field. For example, can be used to check if one enum value is within a set without that
+            enum being marked as [Flags].
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The source value.</param>
+            <param name="acceptedValues">The list of accepted values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.ObjectExtensions.IsOneOf``1(``0,System.Collections.Generic.IEqualityComparer{``0},``0[])">
+            <summary>
+            Gets a boolean value that determines if a specific value is within a list of accepted values.
+            Use this when it's not necessary or when it's overkill to declare the list of accepted values
+            as a readonly field. For example, can be used to check if one enum value is within a set without that
+            enum being marked as [Flags].
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The source value.</param>
+            <param name="comparer">The comparer to use to determine equality.</param>
+            <param name="acceptedValues">The list of accepted values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Extensions.TypeExtensions.GetAllInterfaces(System.Type)">
+            <summary>
+            Recursively get all interfaces of a type
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.TypeExtensions.GetBaseTypes(System.Type)">
+            <summary>
+            Gets the inheritance hierarchy of supplied type.
+            </summary>
+        </member>
+        <member name="M:Uno.Extensions.TypeExtensions.GetFlattenedDeclaredProperty(System.Type,System.String)">
+            <summary>
+            Gets the declared property by searching the flattened hierarchy.
+            </summary>
+            <param name="type">The type to search into</param>
+            <param name="name">The name of the declared property</param>
+            <returns>The property info if found, otherwise null.</returns>
+        </member>
+        <member name="M:Uno.Extensions.TypeExtensions.GetFlattenedDeclaredField(System.Type,System.String)">
+            <summary>
+            Gets the declared field by searching the flattened hierarchy.
+            </summary>
+            <param name="type">The type to search into</param>
+            <param name="name">The name of the declared field</param>
+            <returns>The field info if found, otherwise null.</returns>
+        </member>
+        <member name="M:Uno.Extensions.SynchronizableExtensions.Write``1(Uno.Threading.ISynchronizableLock{``0},System.Func{``0,System.Boolean},System.Action{``0})">
+            <summary>
+            Performs a write operation if the read operation returns false.
+            </summary>
+            <param name="read">A lambda that will test if the data can be read</param>
+            <param name="write">A lambda that will perform the write if the read failed</param>
+            <returns>true if the read succeeded, otherwise false.</returns>
+        </member>
+        <member name="M:Uno.TaskUtilities.Timeout(System.Threading.CancellationToken,System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.TimeSpan,System.Action)">
+            <summary>
+            Executes a provided <see cref="T:System.Threading.Tasks.Task"/>, cancelling the task and executing a fallback action if the Task doesn't complete before the provided timeout.
+            </summary>
+            <param name="ct"></param>
+            <param name="taskSelector"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.TaskUtilities.Timeout(System.Threading.CancellationToken,System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.TimeSpan)">
+            <summary>
+            Executes a provided <see cref="T:System.Threading.Tasks.Task"/>, cancelling the task and throwing a <see cref="T:System.TimeoutException"/> if the Task doesn't complete before the provided timeout.
+            </summary>
+            <param name="ct"></param>
+            <param name="taskSelector"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.TaskUtilities.Timeout``1(System.Threading.CancellationToken,System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.TimeSpan,System.Func{``0})">
+            <summary>
+            Executes a provided <see cref="T:System.Threading.Tasks.Task"/>, cancelling the task and executing a special selector if the Task doesn't complete before the provided timeout.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ct"></param>
+            <param name="taskSelector"></param>
+            <param name="timeout"></param>
+            <param name="timedOutValueSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.TaskUtilities.Timeout``1(System.Threading.CancellationToken,System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.TimeSpan)">
+            <summary>
+            Executes a provided <see cref="T:System.Threading.Tasks.Task"/>, cancelling the task and throwing a <see cref="T:System.TimeoutException"/> if the Task doesn't complete before the provided timeout.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ct"></param>
+            <param name="taskSelector"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Uno.Builder.BuilderContext`1">
+            <summary>
+            A context that helps the creation of an IBuilder based builder.
+            </summary>
+            <typeparam name="TOwner"></typeparam>
+        </member>
+        <member name="T:Uno.Builder.BuilderContext">
+            <summary>
+            A context that helps the creation of an IBuilder based builder.
+            </summary>
+            <typeparam name="TOwner"></typeparam>
+        </member>
+        <member name="M:Uno.Builder.BuilderContext.BuildDependencies">
+            <summary>
+            Builds this builder dependencies
+            </summary>
+        </member>
+        <member name="M:Uno.Builder.BuilderContext.AppendBuildDependency(System.Action)">
+            <summary>
+            Appends an action to be executed after this builder has been built
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Uno.Builder.BuilderContext.Create``1(``0)">
+            <summary>
+            Creates a builder context for the specified owner
+            </summary>
+            <typeparam name="TOwner"></typeparam>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Builder.BuilderContext.GetOrCreateBuilder``1(System.Object,System.String,System.Func{``0})">
+            <summary>
+            Gets the specified builder on the specified owner instance
+            </summary>
+            <param name="owner">The instance on which the new builder will be attached</param>
+            <param name="name">The named instance</param>
+            <param name="builder">The selector that will create a new builder instance</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Builder.BuilderContext.GetOrCreateBuilder``2(``0,System.String,System.Func{``1,``1},System.Func{``1})">
+            <summary>
+            Gets the specified builder on the specified owner instance
+            </summary>
+            <param name="owner">The instance on which the new builder will be attached</param>
+            <param name="name">The named instance</param>
+            <param name="builder">The selector that will create a new builder instance</param>
+            <param name="selector">The builder select that will configure the builder</param>
+            <returns></returns>
+        </member>
+        <member name="T:Uno.Builder.IBuilder">
+            <summary>
+            Defines a builder
+            </summary>
+        </member>
+        <member name="M:Uno.Builder.IBuilder.AppendBuild(System.Action)">
+            <summary>
+            Appends a build action when the parent builder is built
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Uno.Builder.IBuilder.Build">
+            <summary>
+            Builds the current builder
+            </summary>
+        </member>
+        <member name="T:Uno.Builder.IBuilder`1">
+            <summary>
+            Defines a builder typed with its owner
+            </summary>
+            <typeparam name="TOwner"></typeparam>
+        </member>
+        <member name="P:Uno.Builder.IBuilder`1.Owner">
+            <summary>
+            The owner instance of this builder
+            </summary>
+        </member>
+        <member name="T:Uno.Collections.CollectionAdapter`2">
+            <summary>
+            Adapts a collection of type T into a collection of type U
+            </summary>
+            <typeparam name="T">Original type</typeparam>
+            <typeparam name="U">Target type</typeparam>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.#ctor(System.Collections.Generic.ICollection{`0},System.Func{`1,`0},System.Func{`0,`1})">
+            <summary>
+            Constructs a CollectionAdapter
+            </summary>
+            <param name="target">Collection of type T to adapt.</param>
+            <param name="from">Function used to adapt a U into a T.</param>
+            <param name="to">Function used to adapt a T into a U.</param>
+        </member>
+        <member name="P:Uno.Collections.CollectionAdapter`2.Enumerable">
+            <summary>
+            Returns the adapter.
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.Add(`1)">
+            <summary>
+            See base.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.Clear">
+            <summary>
+            See base.
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.Contains(`1)">
+            <summary>
+            See base.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.CopyTo(`1[],System.Int32)">
+            <summary>
+            See base.
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="P:Uno.Collections.CollectionAdapter`2.Count">
+            <summary>
+            See base.
+            </summary>
+        </member>
+        <member name="P:Uno.Collections.CollectionAdapter`2.IsReadOnly">
+            <summary>
+            See base.
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.Remove(`1)">
+            <summary>
+            See base.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.GetEnumerator">
+            <summary>
+            See base.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Collections.CollectionAdapter`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            See base.
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Uno.Collections.ConcatenatingDictionary" -->
+        <member name="T:Uno.Collections.ImmutableList`1">
+            <summary>
+            An immutable list implementation, designed for safe concurrent access.
+            </summary>
+            <remarks>
+            It is possible to mutate the content of this immutable list. Not all
+            protections are in place to ensure a perfect immutability. Don't use it
+            if you are exposing it outside your code. For true immutability
+            protection, you should prefer those from Micrososft's Immutable Collections.
+            </remarks>
+        </member>
+        <member name="P:Uno.Collections.ImmutableList`1.Empty">
+            <summary>
+            Provides an empty list
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.#ctor">
+            <summary>
+            Creates an empty list
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.#ctor(`0[],System.Boolean)">
+            <summary>
+            Initializes the list with the provided array.
+            </summary>
+            <param name="data">An array as source</param>
+            <param name="copyData">If the array should be copied</param>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes the list with the provided array.
+            </summary>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.IndexOf(`0,System.Int32,System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.LastIndexOf(`0,System.Int32,System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.System#Collections#Immutable#IImmutableList{T}#Add(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Insert(System.Int32,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Remove(`0,System.Collections.Generic.IEqualityComparer{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.RemoveAll(System.Predicate{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.RemoveRange(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEqualityComparer{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.RemoveRange(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.System#Collections#Immutable#IImmutableList{T}#RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.SetItem(System.Int32,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Replace(`0,`0,System.Collections.Generic.IEqualityComparer{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Add(`0)">
+            <summary>
+            Returns a new list with the specifed value appended at the end.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Remove(`0)">
+            <summary>
+            Returns a new list with specified value removed.
+            </summary>
+            <param name="value">The value to remove</param>
+            <returns>A new list</returns>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.Contains(`0)">
+            <summary>
+            Determines whether the list contains a specified element
+            </summary>
+            <param name="value">The value to locate.</param>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index.
+            </summary>
+            <param name="index">The index to remove</param>
+            <returns>A new list with the item removed</returns>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.IndexOf(`0)">
+            <summary>
+            Returns the index of the specified value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Uno.Collections.ImmutableList`1.Data">
+            <summary>
+            The underlying data available for thread-safe access
+            </summary>
+            <remarks>
+            Please, don't mutate it! There's not protection against this.
+            </remarks>
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ImmutableList`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="P:Uno.Collections.ImmutableList`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Uno.Collections.ImmutableList`1.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Collections.ListAdapter`2.IndexOf(`1)">
+            <summary>
+            See base.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Collections.ListAdapter`2.Insert(System.Int32,`1)">
+            <summary>
+            See base.
+            </summary>
+            <param name="index"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:Uno.Collections.ListAdapter`2.RemoveAt(System.Int32)">
+            <summary>
+            See base.
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="P:Uno.Collections.ListAdapter`2.Item(System.Int32)">
+            <summary>
+            See base.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Core.Collections.CollectionsExtensionsLegacy.Adapt``2(System.Collections.Generic.ICollection{``0},System.Func{``1,``0},System.Func{``0,``1})">
+            <summary>
+            Adapts a collection of type T into a collection of type U
+            </summary>
+            <typeparam name="TSource">The type to adapt.</typeparam>
+            <typeparam name="TTarget">The target type.</typeparam>
+            <param name="collection">The collection to adapt</param>
+            <param name="from">The function used to adapt a U into a T.</param>
+            <param name="to">The function used to adapt a T into a U.</param>
+            <returns>A adapted collection of the target type.</returns>
+        </member>
+        <member name="M:Uno.Core.Collections.ListExtensionsLegacy.Adapt``2(System.Collections.Generic.IList{``0},System.Func{``1,``0},System.Func{``0,``1})">
+            <summary>
+            Adapts a list of type T into a list of type U
+            </summary>
+            <typeparam name="T">The type to adapt.</typeparam>
+            <typeparam name="U">The target type.</typeparam>
+            <param name="items">The list to adapt</param>
+            <param name="from">The function used to adapt a U into a T.</param>
+            <param name="to">The function used to adapt a T into a U.</param>
+            <returns>A adapted list of the target type.</returns>
+        </member>
+        <member name="T:Uno.Core.DisposableConditionalWeakTable`2">
+            <summary>Enables compilers to dynamically attach IDisposable fields to managed objects. Attached disposable will be disposed on when the key object is collected.</summary>
+            <typeparam name="TKey">The reference type to which the field is attached. </typeparam>
+            <typeparam name="TValue">The field's type. This must be a reference type.</typeparam>
+        </member>
+        <member name="M:Uno.Core.DisposableConditionalWeakTable`2.Add(`0,`1)">
+            <summary>Adds a key to the table.</summary>
+            <param name="key">The key to add. <paramref name="key" /> represents the object to which the property is attached.</param>
+            <param name="value">The key's property value.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="key" /> already exists.</exception>
+        </member>
+        <member name="M:Uno.Core.DisposableConditionalWeakTable`2.GetOrCreateValue(`0)">
+            <summary>Atomically searches for a specified key in the table and returns the corresponding value. If the key does not exist in the table, the method invokes the default constructor of the class that represents the table's value to create a value that is bound to the specified key. </summary>
+            <returns>The value that corresponds to <paramref name="key" />, if <paramref name="key" /> already exists in the table; otherwise, a new value created by the default constructor of the class defined by the TValue generic type parameter.</returns>
+            <param name="key">The key to search for. <paramref name="key" /> represents the object to which the property is attached.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key" /> is null.</exception>
+            <exception cref="T:System.MissingMethodException">In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.MissingMemberException" />, instead.The class that represents the table's value does not define a default constructor.</exception>
+        </member>
+        <member name="M:Uno.Core.DisposableConditionalWeakTable`2.GetValue(`0,System.Runtime.CompilerServices.ConditionalWeakTable{`0,`1}.CreateValueCallback)">
+            <summary>Atomically searches for a specified key in the table and returns the corresponding value. If the key does not exist in the table, the method invokes a callback method to create a value that is bound to the specified key.</summary>
+            <returns>The value attached to <paramref name="key" />, if <paramref name="key" /> already exists in the table; otherwise, the new value returned by the <paramref name="createValueCallback" /> delegate.</returns>
+            <param name="key">The key to search for. <paramref name="key" /> represents the object to which the property is attached.</param>
+            <param name="createValueCallback">A delegate to a method that can create a value for the given <paramref name="key" />. It has a single parameter of type TKey, and returns a value of type TValue.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key" /> or <paramref name="createValueCallback" /> is null.</exception>
+        </member>
+        <member name="M:Uno.Core.DisposableConditionalWeakTable`2.Remove(`0)">
+            <summary>Removes a key and its value from the table.</summary>
+            <returns>true if the key is found and removed; otherwise, false.</returns>
+            <param name="key">The key to remove. </param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key" /> is null.</exception>
+        </member>
+        <member name="M:Uno.Core.DisposableConditionalWeakTable`2.TryGetValue(`0,`1@)">
+            <summary>Gets the value of the specified key.</summary>
+            <returns>true if <paramref name="key" /> is found; otherwise, false.</returns>
+            <param name="key">The key that represents an object with an attached property.</param>
+            <param name="value">When this method returns, contains the attached property value. If <paramref name="key" /> is not found, <paramref name="value" /> contains the default value.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key" /> is null.</exception>
+        </member>
+        <member name="T:Uno.CompositionType">
+            <summary>
+            Represets the type of composition.
+            </summary>
+        </member>
+        <member name="T:Uno.Conversion.EnumConversionStrategy">
+            <summary>
+            Will convert to and from enum, usually with strings
+            </summary>
+            <remarks>
+            System.ComponentModel.DescriptionAttribute is can be used as result
+            or parsing value, if not empty.
+            A description attribute with "?" is considered default value.
+            </remarks>
+        </member>
+        <member name="M:Uno.Conversion.IConversionExtensions.Conversion(System.Object)">
+            <summary>
+            Create extension point (prefer the usage of method extensions)
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.IConversionExtensions.RegisterStrategy(Uno.Conversion.IConversionStrategy)">
+            <summary>
+            Register a conversion strategy
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.IConversionExtensions.RegisterFallbackStrategy(Uno.Conversion.IConversionStrategy)">
+            <summary>
+            Register a conversion strategy to be used as fallback
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.IConversionExtensions.CanConvert(Uno.Conversion.ConversionExtensionPoint,System.Object,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Check if it's possible to do a conversion
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.IConversionExtensions.To(Uno.Conversion.ConversionExtensionPoint,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Initiate the conversion
+            </summary>
+            <remarks>
+            This method is usually called by the extension point.
+            </remarks>
+            <returns>Conversion result</returns>
+        </member>
+        <member name="M:Uno.Conversion.ConversionExtensionsExtensions.RegisterStrategy``1(Uno.Conversion.IConversionExtensions)">
+            <summary>
+            Fluently register a conversion strategy
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.ConversionExtensionsExtensions.RegisterCustomStrategy``2(Uno.Conversion.IConversionExtensions,System.Func{``0,System.Globalization.CultureInfo,``1})">
+            <summary>
+            Fluently register a custom conversion strategy
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.ConversionExtensionsExtensions.RegisterCustomStrategy``2(Uno.Conversion.IConversionExtensions,System.Func{``0,``1})">
+            <summary>
+            Fluently register a custom conversion strategy
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.ConversionExtensionsExtensions.RegisterFallbackStrategy``1(Uno.Conversion.IConversionExtensions)">
+            <summary>
+            Fluently register a conversion strategy to be used as fallback
+            </summary>
+        </member>
+        <member name="M:Uno.Conversion.ConversionExtensionsExtensions.To``1(Uno.Conversion.IConversionExtensions,Uno.Conversion.ConversionExtensionPoint,System.Globalization.CultureInfo)">
+            <summary>
+            Convert source to a specified generic type
+            </summary>
+            <returns>Conversion result</returns>
+        </member>
+        <member name="M:Uno.Conversion.IConversionStrategy.CanConvert(System.Object,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            If the strategy can support a specific value as input
+            </summary>
+            <returns>true=supported</returns>
+        </member>
+        <member name="M:Uno.Conversion.IConversionStrategy.Convert(System.Object,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Issue the conversion result
+            </summary>
+            <returns>result</returns>
+        </member>
+        <member name="T:Uno.Decorator.Decorator`1">
+            <summary>
+            A implementation of IDecorator.
+            </summary>
+            <typeparam name="T">The type to decorate.</typeparam>
+        </member>
+        <member name="M:Uno.Decorator.Decorator`1.#ctor">
+            <summary>
+            Constructs a new Decorator for a default(T) target.
+            </summary>
+        </member>
+        <member name="M:Uno.Decorator.Decorator`1.#ctor(`0)">
+            <summary>
+            Constructs a new Decorator for a specified target.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="P:Uno.Decorator.Decorator`1.Target">
+            <summary>
+            See base.
+            </summary>
+        </member>
+        <member name="T:Uno.Decorator.IDecorator`1">
+            <summary>
+            The interface for the interface Decorator pattern.
+            </summary>
+            <typeparam name="T">The type to decorate.</typeparam>
+        </member>
+        <member name="P:Uno.Decorator.IDecorator`1.Target">
+            <summary>
+            An accessor for the target T.
+            </summary>
+        </member>
+        <member name="T:Uno.DelegateConditionalWeakTable`1">
+            <summary>
+            A <see cref="T:System.Runtime.CompilerServices.ConditionalWeakTable`2"/> dedicated to delegates.
+            <remarks>
+            This helps to attach values to a delegate, but be aware that you may have **lots** of instances of the _same_ delegate (i.e. target + method).
+            This should be used **only** for performance consideration, and you must assume that you may have multiple attached values 
+            for the _same_ delegate.
+            </remarks>
+            </summary>
+            <typeparam name="TValue">The field's type. This must be a reference type.</typeparam>
+        </member>
+        <member name="M:Uno.DelegateConditionalWeakTable`1.GetValue(System.Delegate,System.Func{System.Delegate,`0})">
+            <summary>
+            Atomically searches for a specified key in the table and returns the corresponding value. 
+            If the key does not exist in the table, the method invokes a callback method to create a value that is bound to the specified key.
+            </summary>
+            <param name="key">The key to search for. key represents the object to which the property is attached.</param>
+            <param name="factory">A delegate to a method that can create a value for the given key. It has a single parameter of type TKey, and returns a value of type TValue.</param>
+            <returns>The value attached to key, if key already exists in the table; otherwise, the new value returned by the createValueCallback delegate.</returns>
+        </member>
+        <member name="M:Uno.DelegateConditionalWeakTable`1.TryGetValue(System.Delegate,`0@)">
+            <summary>
+            Gets the value of the specified key.
+            </summary>
+            <param name="key">The key that represents an object with an attached property.</param>
+            <param name="value">When this method returns, contains the attached property value. If key is not found, value contains the default value.</param>
+            <returns>true if key is found; otherwise, false.</returns>
+        </member>
+        <member name="M:Uno.DelegateConditionalWeakTable`1.Remove(System.Delegate)">
+            <summary>
+            Removes a key and its value from the table.
+            </summary>
+            <param name="key">The key to remove.</param>
+            <returns>rue if the key is found and removed; otherwise, false.</returns>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensionsLegacy.DisposeOrLog(System.IDisposable,System.String)">
+            <summary>
+            Dispose the dispoable, and if an error is raised log it
+            </summary>
+        </member>
+        <member name="M:Uno.Disposables.DisposableExtensionsLegacy.DisposeAllOrLog``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Diuspose all items of an enumerable sequence, and if any failed log it and continue
+            </summary>
+        </member>
+        <member name="M:Uno.EnumUtilities.Parse(System.Type,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the string representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object.
+            </summary>
+            <param name="enumType">An enumeration type.</param>
+            <param name="value">A string containing the name or value to convert.</param>
+            <param name="ignoreCase">true to ignore case; false to regard case.</param>
+            <param name="useFallbackValue">If true and parsing failed, try to find the value which has the <seealso cref="T:Uno.FallbackValueAttribute"/> and send it back.</param>
+            <returns>An object of type enumType whose value is represented by value.</returns>
+        </member>
+        <member name="T:Uno.Events.EventHandlerConverter`2">
+            <summary>
+            A helper to convert the type of an event handler and manage the subscriptions.
+            </summary>
+            <typeparam name="TFromHandler">The source handler</typeparam>
+            <typeparam name="TToHandler">The target handler</typeparam>
+        </member>
+        <member name="M:Uno.Events.EventHandlerConverter`2.Add(`0)">
+            <summary>
+            Subscribe to the inner event
+            </summary>
+        </member>
+        <member name="M:Uno.Events.EventHandlerConverter`2.Remove(`0)">
+            <summary>
+            Unsubscribe from the inner event
+            </summary>
+        </member>
+        <member name="T:Uno.InternalsWriteableFromAttribute">
+            <summary>
+            Indicates that the attributed class has its internal properties writeable from the specified target.
+            </summary>
+            <remarks>
+            This attribute is meant to be used by Roslyn analyzers to validate for 
+            immutability, in conjuction with de-serialization scenarios where performance is an issue.
+            </remarks>
+        </member>
+        <member name="P:Uno.InternalsWriteableFromAttribute.Source">
+            <summary>
+            Gets the source namespace or type that can write to the internal properties.
+            </summary>
+        </member>
+        <member name="T:Uno.Key">
+            <summary>
+            Represents a Key concept.
+            </summary>
+        </member>
+        <member name="M:Uno.Key.#ctor(System.Object[])">
+            <summary>
+            Constucts a new Key with an array of items.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:Uno.Key.#ctor(System.Collections.IEnumerable)">
+            <summary>
+            Constucts a new Key with an enumeration of items.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:Uno.Key.GetHashCode">
+            <summary>
+            See Object pattern.
+            </summary>
+        </member>
+        <member name="M:Uno.Key.Equals(System.Object)">
+            <summary>
+            See Object pattern.
+            </summary>
+        </member>
+        <member name="T:Uno.ReferenceEqualityComparer`1">
+            <summary>
+            A reference equality comparer for instances.
+            </summary>
+        </member>
+        <member name="T:Uno.None`1">
+            <summary>
+            Special Option representing an absence of value.
+            </summary>
+            <remarks>
+            This is the implementation of a functional "Option Type" using F# semantic
+            https://en.wikipedia.org/wiki/Option_type
+            </remarks>
+        </member>
+        <member name="P:Uno.None`1.Instance">
+            <summary>
+            Singleton instance of this
+            </summary>
+        </member>
+        <member name="M:Uno.None`1.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.None`1.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.None`1.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Uno.Option">
+            <summary>
+            Static method to create an <see cref="T:Uno.Option`1"/>
+            </summary>
+        </member>
+        <member name="M:Uno.Option.None``1">
+            <summary>
+            Creates an option which represent an absence of value.
+            </summary>
+        </member>
+        <member name="M:Uno.Option.Some``1(``0)">
+            <summary>
+            Creates an option for a given value.
+            </summary>
+        </member>
+        <member name="M:Uno.Option.MatchNone">
+            <summary>
+            Gets a bool which indicates if this otion is <see cref="M:Uno.Option.Some``1(``0)"/> or not.
+            </summary>
+        </member>
+        <member name="M:Uno.Option.MatchSome">
+            <summary>
+            Gets a bool which indicates if this otion is <see cref="M:Uno.Option.Some``1(``0)"/> or not
+            </summary>
+        </member>
+        <member name="M:Uno.Option.MatchSome(System.Object@)">
+            <summary>
+            Gets a bool which indicates if this otion is <see cref="M:Uno.Option.Some``1(``0)"/> or not and send back the value.
+            </summary>
+        </member>
+        <member name="T:Uno.Option`1">
+            <summary>
+            This is a base class for an option.
+            </summary>
+            <remarks>
+            This is the implementation of a functional "Option Type" using F# semantic
+            https://en.wikipedia.org/wiki/Option_type
+            </remarks>
+        </member>
+        <member name="M:Uno.Option`1.MatchSome(`0@)">
+            <summary>
+            Gets a bool which indicates if this otion is <see cref="T:Uno.Some`1"/> or not and send back the value.
+            </summary>
+        </member>
+        <member name="M:Uno.Option`1.op_Implicit(Uno.Option{`0})~`0">
+            <summary>
+            Implicit conversion from <see cref="T:Uno.Option`1"/> to T.
+            </summary>
+            <remarks>
+            `null` or `None` will become `default(T)`.
+            </remarks>
+            <param name="o"></param>
+        </member>
+        <member name="M:Uno.Option`1.op_Implicit(`0)~Uno.Option{`0}">
+            <summary>
+            Implicit conversion of T to <see cref="T:Uno.Some`1"/>
+            </summary>
+        </member>
+        <member name="T:Uno.OptionEqualityComparer`1">
+            <summary>
+            This is an implementation of <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which compare the
+            <see cref="T:Uno.Option`1"/> type and uses an optional inner comparer for the value.
+            </summary>
+        </member>
+        <member name="M:Uno.OptionEqualityComparer`1.Equals(Uno.Option{`0},Uno.Option{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.OptionEqualityComparer`1.GetHashCode(Uno.Option{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:Uno.OptionExtensions">
+            <summary>
+            Extension methods over <see cref="T:Uno.Option`1"/>.
+            </summary>
+        </member>
+        <member name="M:Uno.OptionExtensions.Bind``2(Uno.Option{``0},System.Func{``0,Uno.Option{``1}})">
+            <summary>
+            Creates an <see cref="T:Uno.Option`1"/> using an <see cref="T:Uno.Option`1"/>.
+            </summary>
+            <typeparam name="T1">Type of the source option</typeparam>
+            <typeparam name="T2">Type of the target option</typeparam>
+            <param name="option">The source option</param>
+            <param name="func">Method to create an <see cref="T:Uno.Option`1"/> for a given <typeparamref name="T1"/>.</param>
+            <returns>The resulting option</returns>
+        </member>
+        <member name="M:Uno.OptionExtensions.Map``2(Uno.Option{``0},System.Func{``0,``1})">
+            <summary>
+            Convert an <see cref="T:Uno.Option`1"/> to an <see cref="T:Uno.Option`1"/>
+            </summary>
+            <typeparam name="T1">Type of the source option</typeparam>
+            <typeparam name="T2">Type of the target option</typeparam>
+            <param name="option">The source option to convert</param>
+            <param name="func">Method to convert the value of the source to the value the target</param>
+            <returns>The converted option</returns>
+        </member>
+        <member name="M:Uno.OptionExtensions.SomeOrDefault``1(Uno.Option{``0},``0)">
+            <summary>
+            Gets the value of the option or default(<typeparamref name="T"/>) if none.
+            </summary>
+            <typeparam name="T">Type of the option</typeparam>
+            <param name="option">The source option from which the value have to be extracted</param>
+            <returns>The value of the option or default(<typeparamref name="T"/>) if none.</returns>
+        </member>
+        <member name="M:Uno.OptionExtensions.SomeOrDefault(Uno.Option,System.Object)">
+            <summary>
+            Gets the value of the option or default(object) if none.
+            </summary>
+            <param name="option">The source option from which the value have to be extracted</param>
+            <returns>The value of the option or default(object) if none.</returns>
+        </member>
+        <member name="T:Uno.OptionType">
+            <summary>
+            Represents the different possible types of an <see cref="T:Uno.Option`1"/>
+            </summary>
+        </member>
+        <member name="F:Uno.OptionType.None">
+            <summary>
+            The option does not have value
+            </summary>
+        </member>
+        <member name="F:Uno.OptionType.Some">
+            <summary>
+            The option have a value
+            </summary>
+        </member>
+        <member name="T:Uno.Some`1">
+            <summary>
+            Option holding a value.
+            </summary>
+            <remarks>
+            This is the implementation of a functional "Option Type" using F# semantic
+            https://en.wikipedia.org/wiki/Option_type
+            </remarks>
+        </member>
+        <member name="M:Uno.Some`1.#ctor(`0)">
+            <summary>
+            Creates an <see cref="T:Uno.Option`1"/> for a given value
+            </summary>
+            <param name="value">The value hold by the option</param>
+        </member>
+        <member name="P:Uno.Some`1.Value">
+            <summary>
+            Gets the value
+            </summary>
+        </member>
+        <member name="M:Uno.Some`1.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.Some`1.Equals(Uno.Some{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.Some`1.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.Some`1.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Some`1.op_Implicit(`0)~Uno.Some{`0}">
+            <summary>
+            Implicit conversion of T to <see cref="T:Uno.Some`1"/>
+            </summary>
+        </member>
+        <member name="T:Uno.Pair`1">
+            <summary>
+            Represents a Pair of Ts.
+            </summary>
+            <typeparam name="T">The type of elements in this Pair.</typeparam>
+        </member>
+        <member name="M:Uno.Pair`1.#ctor">
+            <summary>
+            Constructs a new Pair.
+            </summary>
+        </member>
+        <member name="M:Uno.Pair`1.#ctor(`0,`0)">
+            <summary>
+            Constructs a new Pair with it's X and Y items set.
+            </summary>
+            <param name="x">The X item.</param>
+            <param name="y">The Y item.</param>
+        </member>
+        <member name="P:Uno.Pair`1.X">
+            <summary>
+            Accessor for the X item.
+            </summary>
+        </member>
+        <member name="P:Uno.Pair`1.Y">
+            <summary>
+            Acessor for the Y item.
+            </summary>
+        </member>
+        <member name="M:Uno.Pair`1.GetHashCode">
+            <summary>
+            See Object pattern.
+            </summary>
+        </member>
+        <member name="M:Uno.Pair`1.Equals(System.Object)">
+            <summary>
+            See Object pattern.
+            </summary>
+        </member>
+        <member name="T:Uno.Predicates">
+            <summary>
+            A set of common prediactes
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates.Equal">
+            <summary>
+            A predicate that checks equality of two objects using the <see cref="T:Uno.Extensions.EqualityExtensions"/>.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates.ReferenceEqual">
+            <summary>
+            A predicate that checks if two objects are <see cref="M:System.Object.ReferenceEquals(System.Object,System.Object)"/>.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates.True">
+            <summary>
+            A predicate that always returns true.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates.False">
+            <summary>
+            A predicate that always returns false.
+            </summary>
+        </member>
+        <member name="T:Uno.Predicates`1">
+            <summary>
+            A set of common prediactes
+            </summary>
+            <typeparam name="T">Type of parameter of predicates</typeparam>
+        </member>
+        <member name="F:Uno.Predicates`1.Equal">
+            <summary>
+            A predicate that checks equality of two instances of <typeparamref name="T"/> using the <see cref="T:Uno.Extensions.EqualityExtensions"/>.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates`1.ReferenceEqual">
+            <summary>
+            A predicate that checks if two instances of <typeparamref name="T"/> are <see cref="M:System.Object.ReferenceEquals(System.Object,System.Object)"/>.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates`1.True">
+            <summary>
+            A predicate that always returns true.
+            </summary>
+        </member>
+        <member name="F:Uno.Predicates`1.False">
+            <summary>
+            A predicate that always returns false.
+            </summary>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledSetValue">
+            <summary>
+            Creates a compiled method that will allow a the assignation of the specified field.
+            </summary>
+            <param name="fieldInfo">The field to assign</param>
+            <returns>A delegate taking an instance as the first parameter, and the value as the second parameter.</returns>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledSetValue(System.Boolean)">
+            <summary>
+            Creates a compiled method that will allow a the assignation of the specified field.
+            </summary>
+            <param name="fieldInfo">The field to assign</param>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns>A delegate taking an instance as the first parameter, and the value as the second parameter.</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. Invalid parameters could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledSetValue(System.RuntimeTypeHandle,System.RuntimeFieldHandle,System.Boolean)">
+            <summary>
+            Creates a compiled method that will allow a the assignation of the specified field.
+            </summary>
+            <param name="typeHandle">The declaring type for the specified RuntimeFieldHandle</param>
+            <param name="fieldHandle">The field in the specified RuntimeTypeHandle</param>
+            <param name="strict">Removes some type checking to enhance performance.</param>
+            <returns>A delegate taking an instance as the first parameter, and the value as the second parameter.</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. Invalid parameters could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledGetValue">
+            <summary>
+            Creates a compiled method that will get the value of a field 
+            </summary>
+            <param name="fieldInfo">The field to get the value from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledGetValue(System.Boolean)">
+            <summary>
+            Creates a compiled method that will get the value of a field.
+            </summary>
+            <param name="fieldInfo">The field to get the value from.</param>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns>A delegate taking an instance as the first parameter, and returns the value of the field.</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. An invalid parameter could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.FieldDescriptor.ToCompiledGetValue(System.RuntimeTypeHandle,System.RuntimeFieldHandle,System.Boolean)">
+            <summary>
+            Creates a compiled method that will get the value of a field.
+            </summary>
+            <param name="typeHandle">The declaring type for the specified RuntimeFieldHandle</param>
+            <param name="fieldHandle">The field in the specified RuntimeTypeHandle</param>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns></returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. An invalid parameter could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.IMethodDescriptor.ToCompiledMethodInvoke">
+            <summary>
+            Build a compiled method that will call the specified method.
+            </summary>
+            <param name="MethodInfo">The method to invoke</param>
+            <returns>A delegate that will call the requested method</returns>
+        </member>
+        <member name="M:Uno.Reflection.IMethodDescriptor.ToCompiledMethodInvoke(System.Boolean)">
+            <summary>
+            Build a compiled method that will call the specified method.
+            </summary>
+            <param name="MethodInfo">The method to invoke</param>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns>A delegate that will call the requested method</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. An invalid parameter could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.IValueMemberDescriptor.ToCompiledSetValue">
+            <summary>
+            Creates a compiled method that will allow a the assignation of the current member.
+            </summary>
+            <returns>A delegate taking an instance as the first parameter, and the value as the second parameter.</returns>
+        </member>
+        <member name="M:Uno.Reflection.IValueMemberDescriptor.ToCompiledSetValue(System.Boolean)">
+            <summary>
+            Creates a compiled method that will allow a the assignation of the current member.
+            </summary>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns>A delegate taking an instance as the first parameter, and the value as the second parameter.</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. Invalid parameters could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="M:Uno.Reflection.IValueMemberDescriptor.ToCompiledGetValue">
+            <summary>
+            Creates a compiled method that will get the value of  of the current member. 
+            </summary>
+            <param name="fieldInfo">The field to get the value from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Reflection.IValueMemberDescriptor.ToCompiledGetValue(System.Boolean)">
+            <summary>
+            Creates a compiled method that will get the value of  of the current member.
+            </summary>
+            <param name="fieldInfo">The field to get the value from.</param>
+            <param name="strict">Removes some type checking to enhance performance if set to false.</param>
+            <returns>A delegate taking an instance as the first parameter, and returns the value of the field.</returns>
+            <remarks>
+            The use of the strict parameter is required if the caller of the generated method does not validate 
+            parameter types before the call. An invalid parameter could result in unexpected behavior.
+            </remarks>
+        </member>
+        <member name="T:Uno.Runtime">
+            <summary>
+            Runtime information helper class
+            </summary>
+        </member>
+        <member name="M:Uno.Runtime.IsLocalUri(System.Uri)">
+            <summary>
+            Returns true if the uri is a local uri (isolated storage, linked as content, resource, etc.)
+            </summary>
+            <param name="uri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Runtime.GetSafeFilename(System.String)">
+            <summary>
+            Returns a safe filename for a string token.
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Uno.Threading.AsyncLock">
+            <summary>
+            An asynchronous lock, that can be used in conjuction with C# async/await
+            </summary>
+        </member>
+        <member name="M:Uno.Threading.AsyncLock.LockAsync(System.Threading.CancellationToken)">
+            <summary>
+            Acquires the lock, then provides a disposable to release it.
+            </summary>
+            <param name="ct">A cancellation token to cancel the lock</param>
+            <returns>An IDisposable instance that allows the release of the lock.</returns>
+        </member>
+        <member name="M:Uno.Threading.ISynchronizableLock`1.Write(System.Int32,System.Func{`0,System.Boolean},System.Action{`0})">
+            <summary>
+            Performs a write operation if the read operation return false.
+            </summary>
+            <param name="millisecondsTimeout">The timeout to acquire the write lock</param>
+            <param name="read">A lambda that will test if the data can be read</param>
+            <param name="write">A lambda that will perform the write if the read failed</param>
+            <returns>true if the read succeeded, otherwise false.</returns>
+        </member>
+        <member name="T:Uno.Validation.ValidationHelper">
+            <summary>
+            Static class containing a series of method for validating inputs
+            </summary>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper._acceptedCharsInUSAndCanadianPhones">
+            <summary>
+            The accepted chars used to validate the US and Canadian phones
+            </summary>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper._regexOptions">
+            <summary>
+            The regex options
+            </summary>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.EmailRegex">
+            <summary>
+            The email regex.
+            </summary>
+            <remarks>
+            Accepts any email address adhering to the w3c standard that does NOT contain non-latin characters.
+            </remarks>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.CanadianPostalCodeRegex">
+            <summary>
+            The Canadian postal code regex. can be lower case with no space.
+            </summary>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.ZipCodeRegex">
+            <summary>
+            The zip code regex, valid input can be in the form ddddd or ddddd-dddd
+            </summary>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.USStateOnlyRegex">
+            <summary>
+            Gets the us state only regex. Does not include the Territories and Military symbols
+            </summary>
+            <value>
+            The us state only regex.
+            </value>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.USStateWithTerritoriesAndMillitaryRegex">
+            <summary>
+            Gets the us state regex. Includes the Territories and Military symbols
+            </summary>
+            <value>
+            The us state only regex.
+            </value>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.USStateWithTerritoriesRegex">
+            <summary>
+            Gets the us state regex. Includes the Territories but not and Military symbols
+            </summary>
+            <value>
+            The us state only regex.
+            </value>
+        </member>
+        <member name="F:Uno.Validation.ValidationHelper.USStateWithMillitaryRegex">
+            <summary>
+            Gets the us state regex. Includes the Military but not and Territories symbols
+            </summary>
+            <value>
+            The us state only regex.
+            </value>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsEmail(System.String)">
+            <summary>
+            Determines whether the specified input is a valid email.
+            The minimum format of the email must be x@x.xx
+            </summary>
+            <remarks>Regex currently limited to ASCII characters.</remarks>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <returns>
+              <c>true</c> if the specified input is a valid email; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsCanadianPostalCode(System.String)">
+            <summary>
+            Determines whether the specified input is a valid Canadian postal code.
+            </summary>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <returns>
+              <c>true</c> if the specified input is a valid Canadian postal code; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsZipCode(System.String)">
+            <summary>
+            Determines whether the specified input is a valid US zip code.
+            Valid input can be 5 digits or 5 digits followed by 4 digits in the form of ddddd-dddd
+            </summary>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <returns>
+              <c>true</c> if the specified input is a valid US zip code; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsUSState(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Validates US States and/or Territories by @jdforsythe
+            Case insensitive
+            Can include US Territories or not - default does not 
+            Can include US Military postal abbreviations(AA, AE, AP) - default does not
+            Note: "States" always includes DC(District of Colombia)
+            https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations
+            </summary>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <param name="includeTerritories"></param>
+            <param name="includeMilitary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsCurrency(System.String,System.IFormatProvider)">
+            <summary>
+            Determines whether the specified input is valid currency.
+            </summary>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <param name="symbol">The symbol.</param>
+            <param name="optinalSymbol">if set to <c>true</c> the symbol is optional to be considered valid.</param>
+            <returns>
+              <c>true</c> if the specified input is valid currency; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Uno.Validation.ValidationHelper.IsUSCanadaPhone(System.String)">
+            <summary>
+            Determines whether the specified input is a valid north American phone number.
+            To be valid it as to have 7 or 10 digits anything else in between is not validated i.e. separators
+            </summary>
+            <param name="input">The input. If <c>null</c> returns <c>false</c>.</param>
+            <returns>
+              <c>true</c> if the specified input is a valid north American phone; otherwise, <c>false</c>.
+            </returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions.Equality</name>
+    </assembly>
+    <members>
+        <member name="T:Uno.Equality.CollectionEqualityComparer`1">
+            <summary>
+            An EqualityComparre which compare sequence of items
+            </summary>
+        </member>
+        <member name="M:Uno.Equality.CollectionEqualityComparer`1.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            ctor
+            </summary>
+            <param name="comparer">Comparer to use to compare each item</param>
+        </member>
+        <member name="M:Uno.Equality.CollectionEqualityComparer`1.Equals(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Uno.Equality.CollectionEqualityComparer`1.GetHashCode(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Uno.Equality.FuncEqualityComparer">
+            <summary>
+            Allows <see cref="T:Uno.Equality.FuncEqualityComparer`1"/> methods to be called without specifying the compared 
+            type explicitely, which simplifies the syntax and allows for equality comparisons on anonymous types
+            </summary>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer.Create``2(System.Func{``0,``1})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which determine objects equality and hash codes based on a value obtained using a selector.
+            </summary>
+            <param name="valueSelector">Selector to get the value used for comparison of objects.</param>
+            <typeparam name="TValue">Type of the value to compare.</typeparam>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer.Create``2(System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which determine objects equality and hash codes based on a value obtained using a selector.
+            </summary>
+            <param name="valueSelector">Selector to get the value used for comparison of objects.</param>
+            <param name="valueEqualityComparer">Equlity comparre to use to comprer the selectd values.</param>
+            <typeparam name="TValue">Type of the value to compare.</typeparam>
+        </member>
+        <member name="T:Uno.Equality.FuncEqualityComparer`1">
+            <summary>
+            An EqualityComparer configurable using Funcs.
+            </summary>
+            <typeparam name="T">The type of objects to compare.</typeparam>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer`1.#ctor(System.Func{`0,`0,System.Boolean})">
+            <summary>
+            DO NOT USE
+            </summary>
+            <remarks>This constructor does not provide a way to correctly implements the <see cref="M:System.Collections.Generic.IEqualityComparer`1.GetHashCode(`0)"/>. Prefer use overload with the GetHashCode</remarks>
+            <param name="predicate"></param>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            .ctor
+            </summary>
+            <param name="equals">Predicate to invoke to determine equality between objects.</param>
+            <param name="getHashCode">Predicate to invoke to get the hash code of an object.</param>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer`1.Create``1(System.Func{`0,``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which determine objects equality and hash codes based on a value obtained using a selector.
+            </summary>
+            <param name="valueSelector">Selector to get the value used for comparison of objects.</param>
+            <typeparam name="TValue">Type of the value to compare.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer`1.Create``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which determine objects equality and hash codes based on a value obtained using a selector.
+            </summary>
+            <param name="valueSelector">Selector to get the value used for comparison of objects.</param>
+            <param name="valueEqualityComparer">Equlity comparre to use to comprer the selectd values.</param>
+            <typeparam name="TValue">Type of the value to compare.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Uno.Equality.FuncEqualityComparer`2">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which determine objects equality and hash codes based on a value obtained using a selector.
+            </summary>
+            <typeparam name="T">The type of objects to compare.</typeparam>
+            <typeparam name="TValue">The type of the value used for comparison.</typeparam>
+        </member>
+        <member name="M:Uno.Equality.FuncEqualityComparer`2.#ctor(System.Func{`0,`1},System.Collections.Generic.IEqualityComparer{`1})">
+            <summary>
+            .ctor
+            </summary>
+            <param name="valueSelector">Selector to get the value used for comparison of objects.</param>
+        </member>
+        <member name="T:Uno.Equality.IKeyEquatable">
+            <summary>
+            Defines a generalized method that a value type or class implements to create a type-specific method for determining equality of version of instances.
+            </summary>
+        </member>
+        <member name="M:Uno.Equality.IKeyEquatable.GetKeyHashCode">
+            <summary>
+            Gets the hash code of the key of this object.
+            </summary>
+            <returns>A hash code for the current object's key.</returns>
+        </member>
+        <member name="M:Uno.Equality.IKeyEquatable.KeyEquals(System.Object)">
+            <summary>
+            Indicates whether the key of current object is equal to another object's key of the same type.
+            </summary>
+            <param name="other">The object to compare with this object.</param>
+            <returns>True is the current object is another version of the <paramref name="other"/> parameter; otherwise false</returns>
+        </member>
+        <member name="T:Uno.Equality.IKeyEquatable`1">
+            <summary>
+            Defines a generalized method that a value type or class implements to create a type-specific method for determining equality of version of instances.
+            </summary>
+        </member>
+        <member name="M:Uno.Equality.IKeyEquatable`1.GetKeyHashCode">
+            <summary>
+            Gets the hash code of the key of this object.
+            </summary>
+            <returns>A hash code for the current object's key.</returns>
+        </member>
+        <member name="M:Uno.Equality.IKeyEquatable`1.KeyEquals(`0)">
+            <summary>
+            Indicates whether the key of current object is equal to another object's key of the same type.
+            </summary>
+            <param name="other">The object to compare with this object.</param>
+            <returns>True is the current object is another version of the <paramref name="other"/> parameter; otherwise false</returns>
+        </member>
+        <member name="T:Uno.Equality.KeyEqualityComparer">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which compares the key of the objects.
+            </summary>
+            <remarks>
+            For this comparer, the compared objects MUST IMPLEMENT <see cref="T:Uno.Equality.IKeyEquatable"/> (the non-generic version)
+            i.e. **not <see cref="T:Uno.Equality.IKeyEquatable`1"/>**
+            </remarks>
+        </member>
+        <member name="P:Uno.Equality.KeyEqualityComparer.Default">
+            <summary>
+            Gets the default instance of the <see cref="T:Uno.Equality.KeyEqualityComparer"/>.
+            </summary>
+        </member>
+        <member name="T:Uno.Equality.KeyEqualityComparer`1">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> which compares the key of the objects.
+            </summary>
+            <typeparam name="T">Type of the object to compare</typeparam>
+        </member>
+        <member name="P:Uno.Equality.KeyEqualityComparer`1.Default">
+            <summary>
+            Gets the default instance of the <see cref="T:Uno.Equality.KeyEqualityComparer`1"/>.
+            </summary>
+        </member>
+        <member name="M:Uno.Equality.KeyEqualityComparer`1.Equals(`0,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Equality.KeyEqualityComparer`1.GetHashCode(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Uno.Core.Equality.EqualityComparerExtensions.ToEqualityComparer``1(System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Create a non-generic <see cref="T:System.Collections.IEqualityComparer"/> from a generic version.
+            </summary>
+        </member>
+        <member name="T:Uno.Core.Comparison.FastTypeComparer">
+            <summary>
+            A fast type comparer for dictionaries, to avoid going through object.Equals type checking. 
+            To be used along with <see cref="T:System.Collections.Generic.Dictionary`2"/> when <see cref="T:System.Type"/> is the key.
+            </summary>
+        </member>
+        <member name="P:Uno.Core.Comparison.FastTypeComparer.Default">
+            <summary>
+            Provides a single instance
+            </summary>
+        </member>
+        <member name="T:Uno.Comparison.FuncComparer`1">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IComparer`1"/> configurable using Funcs
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Uno.Comparison.FuncComparer`1.Create``1(System.Func{`0,``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IComparer`1"/> using a value selector.
+            </summary>
+        </member>
+        <member name="M:Uno.Comparison.FuncComparer`1.#ctor(System.Func{`0,`0,System.Int32})">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="M:Uno.Comparison.FuncComparer`1.Compare(`0,`0)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

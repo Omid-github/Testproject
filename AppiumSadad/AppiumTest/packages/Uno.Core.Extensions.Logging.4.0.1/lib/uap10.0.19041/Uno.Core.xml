@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Uno.Core.Extensions.Logging</name>
+    </assembly>
+    <members>
+        <member name="M:Uno.Logging.LogExtensions.DebugIfEnabled(Microsoft.Extensions.Logging.ILogger,System.Func{System.String},System.Exception)">
+            <summary>
+            Adds a debug log, but only if debug logs are enabled. If they're not, the provided messageDelegate
+            lambda will not be called.
+            </summary>
+            <param name="log"></param>
+            <param name="messageSelector"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoIfEnabled(Microsoft.Extensions.Logging.ILogger,System.Func{System.String},System.Exception)">
+            <summary>
+            Adds an info log, but only if info logs are enabled. If they're not, the provided messageDelegate
+            lambda will not be called.
+            </summary>
+            <param name="log"></param>
+            <param name="messageSelector"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnIfEnabled(Microsoft.Extensions.Logging.ILogger,System.Func{System.String},System.Exception)">
+            <summary>
+            Adds a warninglog, but only if warning logs are enabled. If they're not, the provided messageDelegate
+            lambda will not be called.
+            </summary>
+            <param name="log"></param>
+            <param name="messageSelector"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorIfEnabled(Microsoft.Extensions.Logging.ILogger,System.Func{System.String},System.Exception)">
+            <summary>
+            Adds an error log, but only if error logs are enabled. If they're not, the provided messageDelegate
+            lambda will not be called.
+            </summary>
+            <param name="log"></param>
+            <param name="messageSelector"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalIfEnabled(Microsoft.Extensions.Logging.ILogger,System.Func{System.String},System.Exception)">
+            <summary>
+            Adds a critical error log, but only if fatal error logs are enabled. If they're not, the provided messageDelegate
+            lambda will not be called.
+            </summary>
+            <param name="log"></param>
+            <param name="messageSelector"></param>
+            <param name="error"></param>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.LogFormat(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.Object)">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.LogFormat(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Object)">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.LogFormat(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Object,System.Object)">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.LogFormat(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.LogFormat(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Object[])">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Log(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Exception)">
+            <summary>
+            Send a log message of the provided log level to configured loggers.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Log(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a log message of the provided log level to configured loggers using a deferred action to build the message,
+            if the log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.TraceFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsTraceEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.TraceFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsTraceEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.TraceFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsTraceEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.TraceFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsTraceEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.TraceFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsTraceEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Trace(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Trace" message to configured loggers.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Trace(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Trace" message to configured loggers using a deferred action to build the message,
+            if the Trace log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.DebugFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsDebugEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.DebugFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsDebugEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.DebugFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsDebugEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.DebugFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsDebugEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.DebugFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsDebugEnabled
+            first to prevent useless processing constructing a logging message.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Debug(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Debug" message to configured loggers.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Debug(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Debug" message to configured loggers using a deferred action to build the message,
+            if the Debug log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsInfoEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Info" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsInfoEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Info" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsInfoEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Info" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsInfoEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Info" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.InfoFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsInfoEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Info" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Info(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Info" message to configured loggers.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Info(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Info" message to configured loggers using a deferred action to build the message,
+            if the Info log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsWarnEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Warn" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsWarnEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Warn" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsWarnEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Warn" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsWarnEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Warn" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.WarnFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsWarnEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Warn" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Warn(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Warn" message to configured loggers using a deferred action to build the message,
+            if the Warn log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Warn(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Warn" message to configured loggers.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Error" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsErrorEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Error" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Error" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsErrorEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Error" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Error" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsErrorEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Error" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Error" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsErrorEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Error" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.ErrorFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Error" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsErrorEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Error" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Error(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Error" message to configured loggers using a deferred action to build the message,
+            if the Error log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Error(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Error" message to configured loggers using a deferred action to build the message,
+            if the Error log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalFormat(Microsoft.Extensions.Logging.ILogger,System.Object)">
+            <summary>
+            Send a "Critical" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsCriticalEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Critical" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object)">
+            <summary>
+            Send a "Critical" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsCriticalEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Critical" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object)">
+            <summary>
+            Send a "Critical" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsCriticalEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Critical" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Send a "Critical" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsCriticalEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Critical" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.CriticalFormat(Microsoft.Extensions.Logging.ILogger,System.String,System.Object[])">
+            <summary>
+            Send a "Critical" message to configured loggers.
+            </summary>
+            <remarks>
+            If the construction of the message is costly, you should check the .IsCriticalEnabled
+            first to prevent useless processing constructing a logging message.
+            Note: "Critical" is usually always available.
+            </remarks>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Critical(Microsoft.Extensions.Logging.ILogger,System.String,System.Exception)">
+            <summary>
+            Send a "Critical" message to configured loggers using a deferred action to build the message,
+            if the Critical log level is enabled.
+            </summary>
+        </member>
+        <member name="M:Uno.Logging.LogExtensions.Critical(Microsoft.Extensions.Logging.ILogger,System.Func{System.Object},System.Exception)">
+            <summary>
+            Send a "Critical" message to configured loggers using a deferred action to build the message,
+            if the Critical log level is enabled.
+            </summary>
+        </member>
+    </members>
+</doc>
