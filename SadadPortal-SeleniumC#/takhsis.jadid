@@ -1,0 +1,215 @@
+using System;
+using TechTalk.SpecFlow;
+using BDDTest.Set;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System.Diagnostics;
+using System.Threading;
+using TechTalk.SpecFlow.Assist;
+using System.Linq;
+
+
+namespace BDDTest.Features
+{
+    [Binding]
+    public class TakhsisPos : BaseTest
+    {
+
+        [Given]
+        public void GivenTheUserSearchesForTheMerchantRequestBasedOn_P0__P1(string p0, string p1)
+
+        {
+            //ورود به فرم ویرایش  پذیرنده 
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Thread.Sleep(5000);
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
+            IWebElement amaliatMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='el_5']/a/span")));
+            //IWebElement amaliat = driver.FindElement(By.XPath("//*[@id='el_5']/a/span"));
+            amaliatMenu.Click();
+            IWebElement TakhsisForm = Driver.FindElement(By.XPath("//*[@href='/Merchants/MerchantTerminal/Index']"));
+            TakhsisForm.Click();
+            //جستجو بر اساس شماره پذیرنده ,  شماره قرارداد
+
+            IWebElement MerchantNo = Driver.FindElement(By.Id("txtMerchantPK"));
+            MerchantNo.Click();
+            MerchantNo.SendKeys(p0);
+            Thread.Sleep(1000);
+
+            //شماره  قرارداد
+            IWebElement ContractNo = Driver.FindElement(By.Id("ContractNo"));
+            ContractNo.Click();
+            Thread.Sleep(2000);
+            ContractNo.SendKeys(p1);
+
+            IWebElement search = Driver.FindElement(By.XPath("//input[@type='button' and @value='جستجو']"));
+            search.Click();
+            Thread.Sleep(4000);
+
+            Thread.Sleep(4000);
+            var GridAmaliat = Driver.FindElements(By.CssSelector("button.ui-button[role='button']"));
+            //button#id//button.class//button[class='']//button.class[attribute='']
+            GridAmaliat[0].Click();
+
+            //تخصیص به پذیرنده در گرید عملیات 
+            IWebElement Edit = Driver.FindElement(By.LinkText("تخصیص به پذیرنده"));
+            Edit.Click();
+
+            //driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
+            // Edit.Click();
+            Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
+            Thread.Sleep(5000);
+
+
+        }
+
+        [When]
+        public void WhenTheUserPerformsTakhsisOperation()
+        {
+            var GridAmaliat = Driver.FindElements(By.CssSelector("button.ui-button[role='button']"));
+            //button#id//button.class//button[class='']//button.class[attribute='']
+            GridAmaliat[0].Click();
+
+            //تخصیص به پذیرنده در گرید عملیات 
+            IWebElement Edit = Driver.FindElement(By.LinkText("تخصیص به پذیرنده"));
+            Edit.Click();
+            //driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
+            // Edit.Click();
+            Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
+            Thread.Sleep(5000);
+
+        }
+
+        [When]
+        public void WhenTheUserFillsTerminalRequestInformationsAsFollowing(Table table)
+        {
+            var TakhsisInfo = table.CreateSet<TakhsisInfo>();
+
+            //مدل پایانه 
+            IWebElement TermModel = Driver.FindElement(By.Id("txtTerminalModel_TermModelCode"));
+            TermModel.Click();
+            TermModel.Clear();
+            Thread.Sleep(2000);
+            TermModel.SendKeys(TakhsisInfo.First().TermModel);
+            Thread.Sleep(2000);
+            TermModel.SendKeys(Keys.Down);
+            TermModel.SendKeys(Keys.Enter);
+            //سریال نامبر
+            IWebElement SerialNo = Driver.FindElement(By.Id("txtTerminalModel_TermModelCode"));
+            SerialNo.Click();
+            Thread.Sleep(1000);
+            TermModel.SendKeys(TakhsisInfo.First().SerialNo);
+
+            //محل نصب انگلسیسی 
+            IWebElement InstallLocNameEN = Driver.FindElement(By.Id("InstallLoc_NameEn"));
+            InstallLocNameEN.Click();
+            InstallLocNameEN.SendKeys(TakhsisInfo.First().InstallLocNameEN);
+
+            ///افزودن شبای پایانه 
+
+            //شبای قرارداد
+            IWebElement IBAN = Driver.FindElement(By.Id("txtMerchantContractIBAN_PK"));
+            IBAN.Click();
+            Thread.Sleep(6000);
+            IBAN.SendKeys("IR810170000000227545995008");
+            IBAN.SendKeys(Keys.Down);
+            IBAN.SendKeys(Keys.Enter);
+            Thread.Sleep(2000);
+
+            //تاثیر گذاری سهیم 
+            IWebElement BehaveID = Driver.FindElement(By.Id("txtMultiplexingValueBehaviorId"));
+            BehaveID.Clear();
+            BehaveID.SendKeys("مقدار جاری");
+            Thread.Sleep(2000);
+            BehaveID.SendKeys(Keys.Down);
+            BehaveID.SendKeys(Keys.Enter);
+            Thread.Sleep(1000);
+
+            //اضافه کردن
+            IWebElement Add1 = Driver.FindElement(By.XPath("//*[@id='merchantTerminalManagementFromId']//div[17]//input[@value='اضافه کردن']"));
+            Add1.Click();
+            Thread.Sleep(4000);
+        }
+
+        [Then]
+        public void ThenPOSTerminalRequestShouldBeAssignedToTheSerialNoSuccessfully()
+        {
+
+            IWebElement successNotif = Driver.FindElement(By.XPath("//*[@id='content']/div[3]/div[1]/div/ul"));
+            var ActualResult = successNotif.Text;
+            var ExpectedResult = "عملیات ثبت با موفقیت انجام شد";
+            Assert.IsTrue(ActualResult.Contains(ExpectedResult));
+            System.Diagnostics.Debug.WriteLine(ActualResult);
+
+
+        }
+    }
+}
+
+
+___________________________________
+ [When(@"The user fills terminal request informations as following:")]
+        public void WhenTheUserFillsTerminalRequestInformationsAsFollowing(Table table)
+        {
+            
+
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 [Given(@"The user searches for the Merchant request based on (.*) and (.*)")]
+        public void GivenTheUserSearchesForTheMerchantRequestBasedOnAnd(string p0, string p1)
+        {
+
+            //ورود به فرم ویرایش  پذیرنده 
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Thread.Sleep(5000);
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
+            IWebElement amaliatMenu = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='el_5']/a/span")));
+            //IWebElement amaliat = driver.FindElement(By.XPath("//*[@id='el_5']/a/span"));
+            amaliatMenu.Click();
+            IWebElement TakhsisForm = Driver.FindElement(By.XPath("//*[@href='/Merchants/MerchantTerminal/Index']"));
+            TakhsisForm.Click();
+            //جستجو بر اساس شماره پذیرنده ,  شماره قرارداد
+
+            IWebElement MerchantNo = Driver.FindElement(By.Id("txtMerchantPK"));
+            MerchantNo.Click();
+            MerchantNo.SendKeys(p0);
+            Thread.Sleep(3000);
+            MerchantNo.SendKeys(Keys.Down);
+            MerchantNo.SendKeys(Keys.Enter);
+            Thread.Sleep(1000);
+
+            //شماره  قرارداد
+            IWebElement ContractNo = Driver.FindElement(By.Id("ContractNo"));
+            ContractNo.Click();
+            ContractNo.SendKeys(p1);
+            Thread.Sleep(1000);
+            ContractNo.SendKeys(Keys.Down);
+            ContractNo.SendKeys(Keys.Enter);
+            Thread.Sleep(1000);
+
+            IWebElement search = Driver.FindElement(By.XPath("//input[@type='button' and @value='جستجو']"));
+            search.Click();
+            Thread.Sleep(3000);
